@@ -1,55 +1,57 @@
 package models.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
-import models.utils.Estudios;
-
 
 @Entity
 public class Tema {
 
-	public static final String PREGUNTA = "pregunta";
-	
-	public static final String NOMBRE = "nombre";
-	
-	@Id
-    @GeneratedValue
-    private Integer id;
-	
-	@Enumerated(EnumType.STRING)
-	private Estudios estudios;
-	
-	public Tema(Estudios estudios){
-		this.estudios = estudios;
-	}
-	
-	public Tema(){
-		
-	}
-	
-	public Integer getId() {
-        return id;
-    }
+	private String pregunta;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-    
-    public Estudios getEstudios(){
-    	return estudios;
-    }
-    
-    public void setEstudios(Estudios estudio){
-    	this.estudios = estudio;
-    }
-    
-    @Override
-    public String toString() {
-        return "Tema [id=" + id + ", estudios=" + estudios + "]";
-    }
+	private String nombre;
+
+	@Id
+	@GeneratedValue
+	private Integer id;
+
+	public Tema(int id, String pregunta, String nombre) {
+		this.id = id;
+		this.nombre = nombre;
+		this.pregunta = pregunta;
+	}
 	
+	public Tema() {
+
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getPregunta() {
+		return pregunta;
+	}
+
+	public void setPregunta(String pregunta) {
+		this.pregunta = pregunta;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	@Override
+	public String toString() {
+		return "Tema [id=" + id + "nombre=" + nombre + "pregunta=" + pregunta + "]";
+	}
+
 }
