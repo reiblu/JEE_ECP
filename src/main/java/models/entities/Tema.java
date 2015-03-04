@@ -15,8 +15,7 @@ public class Tema {
 	@GeneratedValue
 	private Integer id;
 
-	public Tema(int id, String pregunta, String nombre) {
-		this.id = id;
+	public Tema(String pregunta, String nombre) {
 		this.nombre = nombre;
 		this.pregunta = pregunta;
 	}
