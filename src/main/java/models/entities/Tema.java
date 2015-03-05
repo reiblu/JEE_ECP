@@ -7,15 +7,16 @@ import javax.persistence.Id;
 @Entity
 public class Tema {
 
+    
 	public static final String TABLE = "tema";
+
+    @Id
+    @GeneratedValue
+    private Integer id;
 
     private String pregunta;
 
 	private String nombre;
-
-	@Id
-	@GeneratedValue
-	private Integer id;
 
 	public Tema(String pregunta, String nombre) {
 		this.nombre = nombre;

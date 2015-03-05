@@ -15,17 +15,17 @@ public class Voto {
 
 	public static final String TABLE = "voto";
 
-    private int ip_usuario;
+	@Id
+    @GeneratedValue
+    private Integer id;
+	
+    private String ipUsuario;
 
 	private int valoracion;
 
 	@ManyToOne
 	@JoinColumn
 	private Tema tema;
-
-	@Id
-	@GeneratedValue
-	private Integer id;
 
 	@Enumerated(EnumType.STRING)
 	private Estudios estudios;
@@ -34,9 +34,9 @@ public class Voto {
 		
 	}
 	
-	public Voto(Estudios estudios, int ip_usuario, int valoracion, Tema tema) {
+	public Voto(Estudios estudios, String ip_usuario, int valoracion, Tema tema) {
 		this.estudios = estudios;
-		this.ip_usuario = ip_usuario;
+		this.ipUsuario = ip_usuario;
 		this.tema = tema;
 		this.valoracion = valoracion;
 	}
@@ -49,12 +49,12 @@ public class Voto {
 		this.estudios = estudio;
 	}
 
-	public int getIp_usuario() {
-		return ip_usuario;
+	public String getIp_usuario() {
+		return ipUsuario;
 	}
 
-	public void setIp_usuario(int ip_usuario) {
-		this.ip_usuario = ip_usuario;
+	public void setIp_usuario(String ip_usuario) {
+		this.ipUsuario = ip_usuario;
 	}
 
 	public int getValoracion() {
@@ -83,7 +83,7 @@ public class Voto {
 	
 	@Override
 	public String toString() {
-		return "Voto [id=" + id + "ip_usuario=" + ip_usuario + "valoracion=" + valoracion + "id_tema=" + tema.getId() + "estudios=" + estudios + "]";
+		return "Voto [id=" + id + "ip_usuario=" + ipUsuario + "valoracion=" + valoracion + "id_tema=" + tema.getId() + "estudios=" + estudios + "]";
 	}
 
 
