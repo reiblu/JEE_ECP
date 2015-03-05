@@ -22,7 +22,7 @@ public class DaoJpaFactory {
     public static EntityManagerFactory getEntityManagerFactory() {
         return entityManagerFactory;
     }
-    
+
     public TemaDao getTemaDao() {
         return new TemaDaoJpa();
     }
@@ -30,5 +30,5 @@ public class DaoJpaFactory {
     public VotoDao getVotoDao() {
         return new VotoDaoJpa();
     }
-    
+
 }
