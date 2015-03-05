@@ -64,7 +64,7 @@ public class GenericDaoJpa<T, ID> implements GenericDao<T, ID> {
         }
     }
 
-    public void deleteById(ID id) {
+    public void deleteByID(ID id) {
         EntityManager entityManager = DaoJpaFactory.getEntityManagerFactory().createEntityManager();
         T entity = entityManager.find(persistentClass, id);
         if (entity != null) {
@@ -105,12 +105,6 @@ public class GenericDaoJpa<T, ID> implements GenericDao<T, ID> {
         List<T> result = typedQuery.getResultList();
         entityManager.close();
         return result;
-    }
-
-    @Override
-    public void deleteByID(ID id) {
-        // TODO Auto-generated method stub
-        
     }
 
 }

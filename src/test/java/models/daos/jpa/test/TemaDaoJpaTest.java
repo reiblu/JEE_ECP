@@ -22,17 +22,12 @@ public class TemaDaoJpaTest {
     }
 
     @Test
-    public void testDeleteById() {
+    public void testDeleteByID() {
         fail("Not yet implemented");
     }
 
     @Test
     public void testFindAll() {
-        fail("Not yet implemented");
-    }
-
-    @Test
-    public void testDeleteByID() {
         fail("Not yet implemented");
     }
 
