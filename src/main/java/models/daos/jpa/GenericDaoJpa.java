@@ -1,7 +1,6 @@
 package models.daos.jpa;
 
 import java.util.List;
-import java.util.logging.LogManager;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -11,8 +10,10 @@ import javax.persistence.criteria.Root;
 
 import models.daos.GenericDao;
 
-public class GenericDaoJpa<T, ID> implements GenericDao<T, ID> {
+import org.apache.logging.log4j.LogManager;
 
+
+public class GenericDaoJpa<T, ID> implements GenericDao<T, ID> {
     private Class<T> persistentClass;
 
     public GenericDaoJpa(Class<T> persistentClass) {
@@ -34,7 +35,6 @@ public class GenericDaoJpa<T, ID> implements GenericDao<T, ID> {
         } finally {
             entityManager.close();
         }
-
     }
 
     @Override
@@ -45,6 +45,8 @@ public class GenericDaoJpa<T, ID> implements GenericDao<T, ID> {
         return entity;
     }
 
+    // Cuando en una relación de colección se elimina un miembro de la
+    // colección, se debe borrar de la tabla explicitamente
     @Override
     public void update(T entity) {
         EntityManager entityManager = DaoJpaFactory.getEntityManagerFactory().createEntityManager();
@@ -60,11 +62,9 @@ public class GenericDaoJpa<T, ID> implements GenericDao<T, ID> {
         } finally {
             entityManager.close();
         }
-
     }
 
-    @Override
-    public void deleteByID(ID id) {
+    public void deleteById(ID id) {
         EntityManager entityManager = DaoJpaFactory.getEntityManagerFactory().createEntityManager();
         T entity = entityManager.find(persistentClass, id);
         if (entity != null) {
@@ -81,7 +81,6 @@ public class GenericDaoJpa<T, ID> implements GenericDao<T, ID> {
                 entityManager.close();
             }
         }
-
     }
 
     @Override
@@ -106,6 +105,12 @@ public class GenericDaoJpa<T, ID> implements GenericDao<T, ID> {
         List<T> result = typedQuery.getResultList();
         entityManager.close();
         return result;
+    }
+
+    @Override
+    public void deleteByID(ID id) {
+        // TODO Auto-generated method stub
+        
     }
 
 }
