@@ -7,7 +7,9 @@ import javax.persistence.Id;
 @Entity
 public class Tema {
 
-	private String pregunta;
+	public static final String TABLE = "tema";
+
+    private String pregunta;
 
 	private String nombre;
 

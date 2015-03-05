@@ -13,7 +13,9 @@ import models.utils.Estudios;
 @Entity
 public class Voto {
 
-	private int ip_usuario;
+	public static final String TABLE = "voto";
+
+    private int ip_usuario;
 
 	private int valoracion;
 
