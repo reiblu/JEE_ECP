@@ -2,9 +2,12 @@ package models.daos.jpa.test;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class TemaDaoJpaTest {
+	
+	@Before
 
     @Test
     public void testCreate() {

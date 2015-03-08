@@ -17,6 +17,7 @@ public class Tema {
     private String pregunta;
 
 	private String nombre;
+	
 
 	public Tema(String pregunta, String nombre) {
 		this.nombre = nombre;
