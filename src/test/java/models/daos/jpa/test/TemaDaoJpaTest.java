@@ -8,6 +8,7 @@ import javax.persistence.Query;
 
 import models.entities.Tema;
 
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -21,6 +22,10 @@ public class TemaDaoJpaTest {
 		this.em = Persistence.createEntityManagerFactory("JEE_ECP")
 				.createEntityManager();
 		this.t1 = new Tema("¿Te ha gustado?", "Juegos");
+	}
+	
+	@Before
+	public void init1(){
 		em.getTransaction().begin();
 		em.persist(t1);
 		em.getTransaction().commit();
@@ -35,7 +40,10 @@ public class TemaDaoJpaTest {
 
 	@Test
 	public void testRead() {
-		Tema t3 = em.find(Tema.class, "¿Te ha gustado?");
+		Query query = em
+				.createQuery("SELECT id FROM tema WHERE pregunta='¿Te ha gustado?' AND nombre='Juegos'");
+		int id = query.getFirstResult();
+		Tema t3 = em.find(Tema.class, id);
 		assertEquals(t3, t1);
 	}
 
