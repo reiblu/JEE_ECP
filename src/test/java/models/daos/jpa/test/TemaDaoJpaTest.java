@@ -44,7 +44,7 @@ public class TemaDaoJpaTest {
 
     @Test
     public void testDeleteByID() {
-        Query query = em.createQuery("SELECT id FROM tema WHERE prgunta='¿Te gusto?' AND nombre='Juegos'");
+        Query query = em.createQuery("SELECT id FROM tema WHERE pregunta='¿Te gusto?' AND nombre='Juegos'");
         int id = query.getFirstResult();
         Tema t2 = em.find(Tema.class, id);
         em.getTransaction().begin();

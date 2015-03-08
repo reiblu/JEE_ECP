@@ -34,9 +34,9 @@ public class Voto {
 		
 	}
 	
-	public Voto(Estudios estudios, String ip_usuario, int valoracion, Tema tema) {
+	public Voto(Estudios estudios, String ipUsuario, int valoracion, Tema tema) {
 		this.estudios = estudios;
-		this.ipUsuario = ip_usuario;
+		this.ipUsuario = ipUsuario;
 		this.tema = tema;
 		this.valoracion = valoracion;
 	}
@@ -53,8 +53,8 @@ public class Voto {
 		return ipUsuario;
 	}
 
-	public void setIp_usuario(String ip_usuario) {
-		this.ipUsuario = ip_usuario;
+	public void setIp_usuario(String ipUsuario) {
+		this.ipUsuario = ipUsuario;
 	}
 
 	public int getValoracion() {
@@ -83,7 +83,7 @@ public class Voto {
 	
 	@Override
 	public String toString() {
-		return "Voto [id=" + id + "ip_usuario=" + ipUsuario + "valoracion=" + valoracion + "id_tema=" + tema.getId() + "estudios=" + estudios + "]";
+		return "Voto [ipUsuario=" + ipUsuario + "valoracion=" + valoracion + "id_tema=" + tema.getId() + "estudios=" + estudios + "]";
 	}
 
 
