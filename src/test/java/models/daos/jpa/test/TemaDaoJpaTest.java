@@ -26,15 +26,16 @@ public class TemaDaoJpaTest {
 
     @Test
     public void testRead() {
-    	em.find(Tema.class, "풲e ha gustado?");
-    	
+    	Tema t3 = em.find(Tema.class, "풲e ha gustado?");
+    	assertEquals(t3,t1);
     }
 
     @Test
     public void testUpdate() {
     	em.getTransaction().begin();
-        em.merge(new Tema("풲e ha gustado1?","Mandos"));
+        Tema t4 = em.merge(new Tema("풲e ha gustado1?","Mandos"));
         em.getTransaction().commit();
+        assertEquals("Tema [nombre=Mandos pregunta=풲e ha gustado1?]",t4);
         
         em.getTransaction().begin();
         t1.setPregunta("풲e gusto?");
