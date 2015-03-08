@@ -8,13 +8,19 @@ import javax.persistence.Query;
 
 import models.entities.Tema;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class TemaDaoJpaTest {
 	
-	 EntityManager em = Persistence.createEntityManagerFactory("JEE_ECP").createEntityManager();
-	 
-	 Tema t1 = new Tema("¿Te ha gustado?","Juegos");
+	EntityManager em;
+	Tema t1;
+	
+	@BeforeClass
+	public void init() {
+		this.em = Persistence.createEntityManagerFactory("JEE_ECP").createEntityManager();
+		this.t1 = new Tema("¿Te ha gustado?","Juegos");
+	}
 
     @Test
     public void testCreate() {
