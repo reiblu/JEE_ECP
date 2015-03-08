@@ -7,14 +7,19 @@ import javax.persistence.Id;
 @Entity
 public class Tema {
 
-    
-	public static final String TABLE = "tema";
+	public static final String TABLA = "tema";
+	
+	public static final String ID = "ID";
 
     @Id
     @GeneratedValue
     private Integer id;
+    
+    public static final String PREGUNTA = "PREGUNTA";
 
     private String pregunta;
+    
+    public static final String NOMBRE = "NOMBRE";
 
 	private String nombre;
 	
@@ -59,30 +64,11 @@ public class Tema {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Tema other = (Tema) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (nombre == null) {
-			if (other.nombre != null)
-				return false;
-		} else if (!nombre.equals(other.nombre))
-			return false;
-		if (pregunta == null) {
-			if (other.pregunta != null)
-				return false;
-		} else if (!pregunta.equals(other.pregunta))
-			return false;
-		return true;
-	}
+        assert obj != null;
+        Tema other = (Tema) obj;
+        return id.equals(other.id) && nombre.equals(other.nombre)
+                && pregunta.equals(other.pregunta);
+    }
 
 	@Override
 	public String toString() {
