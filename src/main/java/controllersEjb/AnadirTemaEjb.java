@@ -1,5 +1,5 @@
 package controllersEjb;
 
-public class AñadirTemaEjb {
+public class AnadirTemaEjb {
 
 }
