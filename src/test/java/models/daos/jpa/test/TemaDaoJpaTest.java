@@ -45,7 +45,7 @@ public class TemaDaoJpaTest {
     public void testUpdate() {
         t1.setNombre("Premios");
         dao.update(t1);
-        assertEquals(this.t1, dao.read(t1.getId()));
+        assertEquals(this.t1.getNombre(), dao.read(t1.getId()).getNombre());
     }
 
     @Test
@@ -60,7 +60,7 @@ public class TemaDaoJpaTest {
     @Test
     public void testFindAll() {
         // size
-        assertEquals(2, dao.findAll().size());
+        assertEquals(1, dao.findAll().size());
     }
 
     @After
