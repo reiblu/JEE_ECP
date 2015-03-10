@@ -21,7 +21,7 @@ public class VotoDaoJpaTest {
     private VotoDao dao = DaoJpaFactory.getFactory().getVotoDao();
 
     @BeforeClass
-    public void init() {
+    public static void init() {
         DaoJpaFactory.setFactory(new DaoJpaFactory());
         DaoJpaFactory.prepareFactoryWithDropAndCreateTables();
     }
