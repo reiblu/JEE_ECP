@@ -24,6 +24,7 @@ public class VotoDaoJpa extends GenericDaoJpa<Voto, Integer> implements VotoDao 
     	CriteriaDelete<Voto> borrar = criteria.createCriteriaDelete(Voto.class);
 	    Root<Voto> e = borrar.from(Voto.class);
 	    borrar.where(criteria.equal(e.get("tema").get("id"), tema.getId()));
+	    em.createQuery(borrar).executeUpdate();
 	    em.getTransaction().commit();
     	
     }
