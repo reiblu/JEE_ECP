@@ -3,6 +3,7 @@
 	<persistence-unit name="JEE_ECP" transaction-type="RESOURCE_LOCAL">
 	<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 	<class>models.entities.Tema</class>
+	<class>models.entities.Voto</class>
 	<properties>
             <property name="eclipselink.ddl-generation" value="none" /> <!--drop-and-create-tables   none-->
             <property name="eclipselink.logging.level" value="FINE" /> <!-- OFF,WARNING,INFO,FINE,ALL -->

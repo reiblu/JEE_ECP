@@ -8,7 +8,6 @@ import models.entities.Tema;
 import models.entities.Voto;
 import models.utils.Estudios;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -37,40 +36,28 @@ public class VotoDaoJpaTest {
     }
 
     @Test
-    public void testCreate() {
-        Voto v2 = new Voto(Estudios.GRADUADO, "192.0.0.0", 5, t1);
-        dao.create(v2);
-        assertEquals(v2, dao.read(v2.getId()));
-    }
-
-    @Test
     public void testRead() {
-        assertEquals(this.v1, dao.read(v1.getId()));
+        assertTrue(v1.equals(dao.read(v1.getId())));
     }
 
     @Test
     public void testUpdate() {
         v1.setValoracion(6);
         dao.update(v1);
-        assertEquals(this.v1, dao.read(v1.getId()));
+        assertTrue(v1.equals(dao.read(v1.getId())));
     }
 
     @Test
     public void testDeleteByID() {
         Voto v4 = new Voto(Estudios.BACHILLERATO, "192.0.0.0", 9, t1);
         dao.create(v4);
-        dao.deleteByID(v4.getId());
+        dao.BorrarVotosdeTema(t1);
         assertNull(dao.read(v4.getId()));
     }
 
     @Test
     public void testFindAll() {
         assertEquals(2, dao.findAll().size());
-    }
-    
-    @After
-    public void after() {
-        DaoJpaFactory.prepareFactoryWithDropAndCreateTables();
     }
 
 }

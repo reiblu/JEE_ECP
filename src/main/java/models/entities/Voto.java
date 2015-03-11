@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 
 import models.utils.Estudios;
 
+@Entity
 public class Voto {
 
 	public static final String TABLE = "voto";
@@ -85,9 +86,12 @@ public class Voto {
 	public boolean equals(Object obj) {
 		assert obj != null;
 		Voto other = (Voto) obj;
-		return id.equals(other.id) && estudios.equals(other.estudios)
-				&& ipUsuario.equals(other.ipUsuario) && tema.getId().equals(other.tema.getId());
+		return this.id == other.id && estudios.equals(other.estudios)
+				&& ipUsuario.equals(other.ipUsuario) && tema.getId().equals(other.tema.getId()) 
+				&& this.valoracion == other.valoracion;
 	}
+	
+	
 	
 	@Override
 	public String toString() {
