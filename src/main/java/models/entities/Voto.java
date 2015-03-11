@@ -1,5 +1,6 @@
 package models.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -23,7 +24,7 @@ public class Voto {
 
 	private int valoracion;
 
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn
 	private Tema tema;
 
@@ -86,7 +87,7 @@ public class Voto {
 		assert obj != null;
 		Voto other = (Voto) obj;
 		return id.equals(other.id) && estudios.equals(other.estudios)
-				&& ipUsuario.equals(other.ipUsuario);
+				&& ipUsuario.equals(other.ipUsuario) && tema.getId().equals(other.tema.getId());
 	}
 	
 	@Override
