@@ -11,7 +11,6 @@ import javax.persistence.ManyToOne;
 
 import models.utils.Estudios;
 
-@Entity
 public class Voto {
 
 	public static final String TABLE = "voto";

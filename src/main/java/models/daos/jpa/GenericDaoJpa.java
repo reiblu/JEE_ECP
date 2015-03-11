@@ -14,7 +14,7 @@ import org.apache.logging.log4j.LogManager;
 
 
 public class GenericDaoJpa<T, ID> implements GenericDao<T, ID> {
-    private Class<T> persistentClass;
+    protected Class<T> persistentClass;
 
     public GenericDaoJpa(Class<T> persistentClass) {
         this.persistentClass = persistentClass;
