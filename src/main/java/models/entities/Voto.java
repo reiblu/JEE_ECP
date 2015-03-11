@@ -82,6 +82,14 @@ public class Voto {
 	}
 	
 	@Override
+	public boolean equals(Object obj) {
+		assert obj != null;
+		Voto other = (Voto) obj;
+		return id.equals(other.id) && estudios.equals(other.estudios)
+				&& ipUsuario.equals(other.ipUsuario);
+	}
+	
+	@Override
 	public String toString() {
 		return "Voto [ipUsuario=" + ipUsuario + "valoracion=" + valoracion + "id_tema=" + tema.getId() + "estudios=" + estudios + "]";
 	}
