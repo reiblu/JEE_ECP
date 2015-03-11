@@ -57,7 +57,7 @@ public class VotoDaoJpaTest {
 
     @Test
     public void testFindAll() {
-        assertEquals(2, dao.findAll().size());
+        assertEquals(1, dao.findAll().size());
     }
 
 }

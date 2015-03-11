@@ -17,24 +17,24 @@ public class Voto {
 	public static final String TABLE = "voto";
 
 	@Id
-    @GeneratedValue
-    private Integer id;
-	
-    private String ipUsuario;
+	@GeneratedValue
+	private Integer id;
+
+	private String ipUsuario;
 
 	private int valoracion;
 
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn
 	private Tema tema;
 
 	@Enumerated(EnumType.STRING)
 	private Estudios estudios;
 
-	public Voto(){
-		
+	public Voto() {
+
 	}
-	
+
 	public Voto(Estudios estudios, String ipUsuario, int valoracion, Tema tema) {
 		this.estudios = estudios;
 		this.ipUsuario = ipUsuario;
@@ -81,22 +81,21 @@ public class Voto {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		assert obj != null;
 		Voto other = (Voto) obj;
 		return this.id == other.id && estudios.equals(other.estudios)
-				&& ipUsuario.equals(other.ipUsuario) && tema.getId().equals(other.tema.getId()) 
+				&& ipUsuario.equals(other.ipUsuario)
+				&& tema.getId().equals(other.tema.getId())
 				&& this.valoracion == other.valoracion;
 	}
-	
-	
-	
+
 	@Override
 	public String toString() {
-		return "Voto [ipUsuario=" + ipUsuario + "valoracion=" + valoracion + "id_tema=" + tema.getId() + "estudios=" + estudios + "]";
+		return "Voto [ipUsuario=" + ipUsuario + "valoracion=" + valoracion
+				+ "id_tema=" + tema.getId() + "estudios=" + estudios + "]";
 	}
-
 
 }

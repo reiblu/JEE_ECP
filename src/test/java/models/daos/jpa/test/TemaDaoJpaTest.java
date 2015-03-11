@@ -5,7 +5,6 @@ import models.daos.TemaDao;
 import models.daos.jpa.DaoJpaFactory;
 import models.entities.Tema;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -30,22 +29,15 @@ public class TemaDaoJpaTest {
     }
 
     @Test
-    public void testCreate() {
-        Tema t2 = new Tema("¿Te gusto?", "Mandos");
-        dao.create(t2);
-        assertEquals(t2, dao.read(t2.getId()));
-    }
-
-    @Test
     public void testRead() {
-        assertEquals(this.t1, dao.read(t1.getId()));
+    	assertTrue(t1.equals(dao.read(t1.getId())));
     }
 
     @Test
     public void testUpdate() {
         t1.setNombre("Premios");
         dao.update(t1);
-        assertEquals(this.t1.getNombre(), dao.read(t1.getId()).getNombre());
+        assertTrue(t1.equals(dao.read(t1.getId())));
     }
 
     @Test
@@ -62,9 +54,5 @@ public class TemaDaoJpaTest {
         // size
         assertEquals(1, dao.findAll().size());
     }
-
-    @After
-    public void after() {
-        DaoJpaFactory.prepareFactoryWithDropAndCreateTables();
-    }
+    
 }
