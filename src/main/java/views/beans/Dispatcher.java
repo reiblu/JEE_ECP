@@ -15,6 +15,14 @@ public class Dispatcher extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     private static String PATH_ROOT_VIEW = "/viewsJsp/";
+    
+    
+    
+    @Override
+    public void init() throws ServletException {
+        
+        super.init();
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -23,6 +31,7 @@ public class Dispatcher extends HttpServlet {
         String action = request.getPathInfo().substring(1);
         LogManager.getLogger(Dispatcher.class).debug("Action: " + action);
 
+        
         String view;
         switch (action) {
         case "votar":
@@ -35,6 +44,11 @@ public class Dispatcher extends HttpServlet {
             request.setAttribute(action, votos);
             view = action;
             break;
+        case "verTemas":
+            VerTemasBean temas = new VerTemasBean();
+            request.setAttribute(action, temas);
+            view = action;
+            break;
         default:
             view = "home";
         }
@@ -43,4 +57,6 @@ public class Dispatcher extends HttpServlet {
                 .forward(request, response);
 
     }
+
+  
 }
