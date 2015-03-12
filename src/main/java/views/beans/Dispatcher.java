@@ -10,18 +10,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.LogManager;
 
+import controllers.ControllerFactory;
+import controllersEjb.ControllerEjbFactory;
+
 @WebServlet("/jsp/*")
 public class Dispatcher extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     private static String PATH_ROOT_VIEW = "/viewsJsp/";
     
-    
+    private ControllerFactory controller;
     
     @Override
     public void init() throws ServletException {
-        
         super.init();
+        controller = new ControllerEjbFactory();
     }
 
     @Override
@@ -36,6 +39,7 @@ public class Dispatcher extends HttpServlet {
         switch (action) {
         case "votar":
             VotarBean votar = new VotarBean();
+            
             request.setAttribute(action, votar);
             view = action;
             break;
@@ -46,6 +50,7 @@ public class Dispatcher extends HttpServlet {
             break;
         case "verTemas":
             VerTemasBean temas = new VerTemasBean();
+            temas.serControllerFactory(controller);
             request.setAttribute(action, temas);
             view = action;
             break;

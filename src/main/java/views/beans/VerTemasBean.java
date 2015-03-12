@@ -6,11 +6,15 @@ import models.entities.Tema;
 
 import org.apache.logging.log4j.LogManager;
 
+import controllers.ControllerFactory;
+
 public class VerTemasBean {
 
     private List<Tema> temas;
 
     private String errorMsg;
+
+    private ControllerFactory controllerFactory;
 
     public VerTemasBean() {
 
@@ -35,7 +39,7 @@ public class VerTemasBean {
     public void update() {
         LogManager.getLogger(VerTemasBean.class).debug(
                 "Se accede a la capa de negocio para recuperar roles");
-        // this.temas = new String[] {"uno", "dos", "tres"};
+        // this.temas = controllerFactory.getVotacionesController.get();
     }
 
     public String process() {
@@ -47,6 +51,11 @@ public class VerTemasBean {
                     "Se accede a la capa de negocio para registrar persona");
             return "home";
         }
+    }
+
+    public void serControllerFactory(ControllerFactory controller) {
+        controller = this.controllerFactory;
+        
     }
 
 }
