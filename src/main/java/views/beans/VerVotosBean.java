@@ -1,5 +1,5 @@
 package views.beans;
 
-public class Dispacher {
+public class VerVotosBean {
 
 }
