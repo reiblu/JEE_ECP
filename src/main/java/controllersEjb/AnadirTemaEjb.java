@@ -1,5 +1,7 @@
 package controllersEjb;
 
-public class AnadirTemaEjb {
+import controllers.AnadirTema;
+
+public class AnadirTemaEjb implements AnadirTema {
 
 }

@@ -1,5 +1,7 @@
 package controllersEjb;
 
-public class VerVotosEjb {
+import controllers.VerVotos;
+
+public class VerVotosEjb implements VerVotos {
 
 }

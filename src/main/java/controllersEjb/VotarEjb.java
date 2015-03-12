@@ -1,5 +1,7 @@
 package controllersEjb;
 
-public class VotarEjb {
+import controllers.Votar;
+
+public class VotarEjb implements Votar {
 
 }
