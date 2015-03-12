@@ -8,30 +8,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.LogManager;
+
 @WebServlet("/beans/*")
 public class Dispatcher extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    private static String PATH_ROOT_VIEW = "/views/";
+    private static String PATH_ROOT_VIEW = "JEE_ECP/views/";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         String action = request.getPathInfo().substring(1);
+        //LogManager.getLogger(Dispatcher.class).debug("action" + action);;
 
         String view;
         switch (action) {
-        case "votar":
-            VotarBean votar = new VotarBean();
-            request.setAttribute(action, votar);
-            view = action;
-            break;
-        case "verVotos":
-            VerVotosBean verVotos = new VerVotosBean();
-            request.setAttribute(action, verVotos);
-            view = action;
-            break;
         default:
             view = "home";
         }
