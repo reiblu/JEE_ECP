@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.daos.jpa.DaoJpaFactory;
-
 import org.apache.logging.log4j.LogManager;
 
 @WebServlet("/jsp/*")
@@ -27,6 +25,16 @@ public class Dispatcher extends HttpServlet {
 
         String view;
         switch (action) {
+        case "votar":
+            VotarBean votar = new VotarBean();
+            request.setAttribute(action, votar);
+            view = action;
+            break;
+        case "verVotos":
+            VerVotosBean votos = new VerVotosBean();
+            request.setAttribute(action, votos);
+            view = action;
+            break;
         default:
             view = "home";
         }
