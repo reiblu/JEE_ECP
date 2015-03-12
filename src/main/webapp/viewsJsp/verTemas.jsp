@@ -4,11 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Votar</title>
+<title>Ver temas</title>
 </head>
 <body>
+
     <h2>
-        Vista de <b>Votar</b>
+        Vista de <b>Temas</b>
     </h2>
 
 </body>
