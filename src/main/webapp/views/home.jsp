@@ -9,10 +9,10 @@
 <body>
 	<h1>Bienvenido a tu aplicacion para votar</h1>
 	<p>
-		<a href="/JEE_ECP/views/votar">Votar</a>
+		<a href="views/votar">Votar</a>
 	</p>
 	<p>
-		<a href="/JEE_ECP/views/verVotos">Ver votos</a>
+		<a href="views/verVotos">Ver votos</a>
 	</p>
 </body>
 </html>
