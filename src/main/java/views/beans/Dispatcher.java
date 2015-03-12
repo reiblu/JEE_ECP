@@ -8,18 +8,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/beans/*")
+import models.daos.jpa.DaoJpaFactory;
+
+import org.apache.logging.log4j.LogManager;
+
+@WebServlet("/jsp/*")
 public class Dispatcher extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    private static String PATH_ROOT_VIEW = "views/";
+    private static String PATH_ROOT_VIEW = "/viewsJsp/";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         String action = request.getPathInfo().substring(1);
-       
+        LogManager.getLogger(Dispatcher.class).debug("Action: " + action);
+
         String view;
         switch (action) {
         default:
