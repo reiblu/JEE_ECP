@@ -24,7 +24,7 @@ public class Voto {
 
 	private int valoracion;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn
 	private Tema tema;
 
