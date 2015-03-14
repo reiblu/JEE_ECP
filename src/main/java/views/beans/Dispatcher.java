@@ -37,12 +37,6 @@ public class Dispatcher extends HttpServlet {
         
         String view;
         switch (action) {
-        case "votar":
-            VotarBean votar = new VotarBean();
-            
-            request.setAttribute(action, votar);
-            view = action;
-            break;
         case "verVotos":
             VerVotosBean votos = new VerVotosBean();
             request.setAttribute(action, votos);
@@ -50,7 +44,7 @@ public class Dispatcher extends HttpServlet {
             break;
         case "verTemas":
             VerTemasBean temas = new VerTemasBean();
-            temas.serControllerFactory(controller);
+            temas.setControllerFactory(controller);
             request.setAttribute(action, temas);
             view = action;
             break;
@@ -62,6 +56,29 @@ public class Dispatcher extends HttpServlet {
                 .forward(request, response);
 
     }
-
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String action = request.getPathInfo().substring(1);
+        String view = "home";
+        switch (action) {
+        case "verTemas":
+        	VerTemasBean temas = new VerTemasBean();
+        	temas.setidTema(Integer.valueOf(request.getParameter("tema")));
+        	request.setAttribute(action, temas);
+        	view = temas.process();
+        case "votar":
+        	VotarBean votar = new VotarBean();
+           
+            votar.setControllerFactory(controller);
+            request.setAttribute(action, votar);
+            view = votar.process();
+            break;
+        }
+        
+        this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")
+        .forward(request, response);
+    }
   
 }

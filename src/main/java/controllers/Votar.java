@@ -8,4 +8,6 @@ public interface Votar {
 
 	public List<Tema> getTemas();
 
+	public Tema getTema(int idTema);
+
 }

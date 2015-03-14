@@ -10,6 +10,8 @@ import controllers.ControllerFactory;
 
 public class VerTemasBean {
 
+	private int idTema;
+	
     private List<Tema> temas;
 
     private String errorMsg;
@@ -35,6 +37,12 @@ public class VerTemasBean {
     public void setTemas(List<Tema> temas) {
         this.temas = temas;
     }
+    
+	public void setidTema(int attribute) {
+
+		idTema = attribute;
+
+	}
 
     public void update() {
         LogManager.getLogger(VerTemasBean.class).debug(
@@ -42,22 +50,13 @@ public class VerTemasBean {
          this.temas = controllerFactory.getVotarController().getTemas();
     }
 
-    public String process() {
-        if (this.temas.size() == 0) {
-            this.errorMsg = "No hay ningún tema";
-            LogManager.getLogger(VerTemasBean.class).debug(
-                    this.errorMsg);
-            return "persona";
-        } else {
-            LogManager.getLogger(VerTemasBean.class).debug(
-                    "Se accede a la capa de negocio para registrar persona");
-            return "home";
-        }
-    }
-
-    public void serControllerFactory(ControllerFactory controller) {
+    public void setControllerFactory(ControllerFactory controller) {
         this.controllerFactory = controller;
         
+    }
+    
+    public String process(){
+    	return "votar";
     }
 
 }

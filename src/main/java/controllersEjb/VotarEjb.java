@@ -16,4 +16,11 @@ public class VotarEjb implements Votar {
 		return lista;
 	}
 
+	@Override
+	public Tema getTema(int idTema) {
+		TemaDao temaDao = DaoFactory.getFactory().getTemaDao();
+		Tema tema = temaDao.read(idTema);
+		return tema;
+	}
+
 }

@@ -12,15 +12,11 @@
     <h2>
         Vista de <b>Votos</b>
     </h2>
-    <c:set var="temaBean" scope="request" value="${verTemas}" />
-    <div>${temaBean.update()}</div>
+    <c:set var="votar" scope="request" value="${votar}" />
+    <div>${votar.update()}</div>
     <form action="/jee/jsp/votar" method="post">
         <p>
-            Temas: <select name="tema">
-                <c:forEach var="tema" items="${temaBean.temas}">
-                    <option value="${tema.id}">${tema.nombre}</option>
-                </c:forEach>
-            </select>
+            Temas seleccionado: 
         </p>
         <p>
 			<input type="submit" value="Seleccionar" />
