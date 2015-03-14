@@ -16,10 +16,12 @@
     <div>${votar.update()}</div>
     <form action="/jee/jsp/votar" method="post">
         <p>
-            Temas seleccionado: 
+            Tema seleccionado: <br> 
+            	Nombre: ${votar.tema.nombre} <br>
+            	Pregunta: ${votar.tema.pregunta} <br>
         </p>
         <p>
-			<input type="submit" value="Seleccionar" />
+			<input type="submit" value="votar" />
 		</p>
     </form>
 

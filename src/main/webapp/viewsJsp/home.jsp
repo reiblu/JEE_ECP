@@ -9,13 +9,11 @@
 <body>
 	<h1>Bienvenido a tu aplicacion para votar</h1>
 	<p>
-		<a href="/jee/jsp/votar">Votar</a>
+		<a href="/jee/jsp/verTemas">Votar</a>
 	</p>
 	<p>
 		<a href="/jee/jsp/verVotos">Ver votos</a>
 	</p>
-	<p>
-		<a href="/jee/jsp/verTemas">Ver temas</a>
-	</p>
+	
 </body>
 </html>

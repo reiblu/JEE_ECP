@@ -9,8 +9,6 @@ import org.apache.logging.log4j.LogManager;
 import controllers.ControllerFactory;
 
 public class VerTemasBean {
-
-	private int idTema;
 	
     private List<Tema> temas;
 
@@ -37,12 +35,6 @@ public class VerTemasBean {
     public void setTemas(List<Tema> temas) {
         this.temas = temas;
     }
-    
-	public void setidTema(int attribute) {
-
-		idTema = attribute;
-
-	}
 
     public void update() {
         LogManager.getLogger(VerTemasBean.class).debug(
@@ -54,9 +46,6 @@ public class VerTemasBean {
         this.controllerFactory = controller;
         
     }
-    
-    public String process(){
-    	return "votar";
-    }
+  
 
 }

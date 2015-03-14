@@ -40,6 +40,11 @@ public class VotarBean {
 
 	}
 
+	public void setidTema(int attribute) {
+
+		idTema = attribute;
+
+	}
 
 	public void update() {
 
@@ -53,7 +58,7 @@ public class VotarBean {
 			LogManager.getLogger(VerTemasBean.class).debug(this.errorMsg);
 			return "home";
 		} else {
-			//controllerFactory.getVotarController().votar();
+			// controllerFactory.getVotarController().votar();
 			return "home";
 		}
 	}
