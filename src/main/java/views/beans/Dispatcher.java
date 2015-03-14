@@ -72,16 +72,25 @@ public class Dispatcher extends HttpServlet {
 
 		String view = "home";
 		switch (action) {
-		
+
 		case "votar":
 			VotarBean votar = new VotarBean();
 			votar.setidTema(Integer.valueOf(request.getParameter("tema")));
-			votar.setValoracion(Integer.valueOf(request.getParameter("valoracion")));
+			votar.setValoracion(Integer.valueOf(request
+					.getParameter("valoracion")));
 			votar.setEstudios(request.getParameter("estudios"));
 			votar.setIpusuario(request.getRemoteAddr());
 			votar.setControllerFactory(controller);
 			request.setAttribute(action, votar);
 			view = votar.process();
+			break;
+
+		case "eliminarTema":
+			EliminarTemaBean eliminar = new EliminarTemaBean();
+			eliminar.setidTema(Integer.valueOf(request.getParameter("tema")));
+			eliminar.setControllerFactory(controller);
+			request.setAttribute(action, eliminar);
+			view = eliminar.process();
 			break;
 		}
 

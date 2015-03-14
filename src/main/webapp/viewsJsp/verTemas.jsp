@@ -23,9 +23,22 @@
             </select>
         </p>
         <p>
-			<input type="submit" value="Seleccionar" />
+			<input type="submit" value="Votar tema" />
 		</p>
     </form>
+    <form action="/jee/jsp/eliminarTema" method="post">
+        <p>
+            Temas: <select name="tema">
+                <c:forEach var="tema" items="${temaBean.temas}">
+                    <option value="${tema.id}">${tema.nombre}</option>
+                </c:forEach>
+            </select>
+        </p>
+        <p>
+			<input type="submit" value="Eliminar tema" />
+		</p>
+    </form>
+    
 
 </body>
 </html>
