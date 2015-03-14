@@ -39,7 +39,7 @@ public class VerTemasBean {
     public void update() {
         LogManager.getLogger(VerTemasBean.class).debug(
                 "Se accede a la capa de negocio para recuperar roles");
-        // this.temas = controllerFactory.getVotacionesController.get();
+         this.temas = controllerFactory.getVotarController().getTemas();
     }
 
     public String process() {

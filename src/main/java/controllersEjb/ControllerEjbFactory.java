@@ -3,6 +3,7 @@ package controllersEjb;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import models.daos.jpa.DaoJpaFactory;
 import controllers.AnadirTema;
 import controllers.ControllerFactory;
 import controllers.EliminarTema;
@@ -22,7 +23,7 @@ public class ControllerEjbFactory extends ControllerFactory {
     private Votar votarController;
 
     public ControllerEjbFactory() {
-        
+    	DaoJpaFactory.setFactory(new DaoJpaFactory());
     }
 
     public AnadirTema getanadirTemaController() {
