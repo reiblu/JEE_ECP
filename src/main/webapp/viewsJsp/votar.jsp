@@ -15,11 +15,23 @@
     <c:set var="votar" scope="request" value="${votar}" />
     <div>${votar.update()}</div>
     <form action="/jee/jsp/votar" method="post">
+    	<input type="hidden" name="tema" value="${votar.tema.id}" />
         <p>
             Tema seleccionado: <br> 
             	Nombre: ${votar.tema.nombre} <br>
             	Pregunta: ${votar.tema.pregunta} <br>
         </p>
+         <p>
+            Temas: <select name="estudios">
+                <c:forEach var="est" items="${votar.estudios}">
+                    <option value="${est.name()}">${est.name()}</option>
+                </c:forEach>
+            </select>
+        </p>
+        <p>
+        Valoracion:
+			<input type="number" name="valoracion" min="1" max="10"/>
+		</p>
         <p>
 			<input type="submit" value="votar" />
 		</p>

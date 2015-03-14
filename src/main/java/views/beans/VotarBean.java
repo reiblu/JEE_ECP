@@ -1,8 +1,7 @@
 package views.beans;
 
-import org.apache.logging.log4j.LogManager;
-
 import models.entities.Tema;
+import models.utils.Estudios;
 import controllers.ControllerFactory;
 
 public class VotarBean {
@@ -10,6 +9,12 @@ public class VotarBean {
 	private int idTema;
 
 	private Tema tema;
+	
+	private int valoracion;
+	
+	private String ipUsuario;
+	
+	private Estudios estudios;
 
 	private String errorMsg;
 
@@ -45,6 +50,10 @@ public class VotarBean {
 		idTema = attribute;
 
 	}
+	
+	public Estudios[] getEstudios(){
+		return Estudios.values();
+	}
 
 	public void update() {
 
@@ -53,14 +62,25 @@ public class VotarBean {
 	}
 
 	public String process() {
-		if (this.tema == null) {
-			this.errorMsg = "Me estas intentado timar";
-			LogManager.getLogger(VerTemasBean.class).debug(this.errorMsg);
+			update();
+			controllerFactory.getVotarController().votar(estudios, ipUsuario, valoracion, tema);
 			return "home";
-		} else {
-			// controllerFactory.getVotarController().votar();
-			return "home";
-		}
+		
+	}
+
+	public void setValoracion(Integer valoracion) {
+		this.valoracion = valoracion;
+		
+	}
+
+	public void setEstudios(String estudio) {
+		this.estudios = Estudios.valueOf(estudio);
+		
+	}
+
+	public void setIpusuario(String ipUser) {
+		this.ipUsuario = ipUser;
+		
 	}
 
 }
