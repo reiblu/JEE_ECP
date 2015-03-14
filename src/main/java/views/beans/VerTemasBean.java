@@ -45,6 +45,8 @@ public class VerTemasBean {
     public String process() {
         if (this.temas.size() == 0) {
             this.errorMsg = "No hay ningún tema";
+            LogManager.getLogger(VerTemasBean.class).debug(
+                    this.errorMsg);
             return "persona";
         } else {
             LogManager.getLogger(VerTemasBean.class).debug(
@@ -54,7 +56,7 @@ public class VerTemasBean {
     }
 
     public void serControllerFactory(ControllerFactory controller) {
-        controller = this.controllerFactory;
+        this.controllerFactory = controller;
         
     }
 
