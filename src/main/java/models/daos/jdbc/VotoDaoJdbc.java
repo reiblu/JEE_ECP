@@ -46,7 +46,7 @@ public class VotoDaoJdbc extends GenericDaoJdbc<Voto, Integer> implements VotoDa
     }
 
 	@Override
-	public void BorrarVotosdeTema(Tema tema) {
+	public void BorrarVotosdeTema(int idTema) {
 		// TODO Auto-generated method stub
 		
 	}

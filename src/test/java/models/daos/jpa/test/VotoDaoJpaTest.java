@@ -51,7 +51,7 @@ public class VotoDaoJpaTest {
     public void testDeleteByID() {
         Voto v4 = new Voto(Estudios.BACHILLERATO, "192.0.0.0", 9, t1);
         dao.create(v4);
-        dao.BorrarVotosdeTema(t1);
+        dao.BorrarVotosdeTema(t1.getId());
         assertNull(dao.read(v4.getId()));
     }
 
