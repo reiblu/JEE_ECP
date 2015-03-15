@@ -3,6 +3,8 @@ package models.daos.jpa;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaDelete;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import models.daos.VotoDao;
@@ -26,6 +28,25 @@ public class VotoDaoJpa extends GenericDaoJpa<Voto, Integer> implements VotoDao 
 	    em.createQuery(borrar).executeUpdate();
 	    em.getTransaction().commit();
     	
+    }
+    
+    public int getNumVotos(int idTema){
+    	
+    	EntityManager entityManager = DaoJpaFactory.getEntityManagerFactory().createEntityManager();
+    	CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+    	CriteriaQuery<Long> query = cb.createQuery(Long.class);
+
+    	Root<Voto> root = query.from(Voto.class);
+    	
+    	query.select(cb.count(root));
+    	Predicate predicate = criteriaBuilder.equal(root.get("theme").get("id"),id);
+        query.where(predicate);
+    	
+    	return 0;
+    }
+    
+    public int getValorMedia(int idTema){
+    	return 0;
     }
 
 }

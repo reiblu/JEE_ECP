@@ -12,9 +12,6 @@
 		<a href="/jee/jsp/verTemas">Ver temas</a>
 	</p>
 	<p>
-		<a href="/jee/jsp/verVotos">Ver votos</a>
-	</p>
-	<p>
 		<a href="/jee/jsp/altaTema">Nuevo Tema</a>
 	</p>
 	

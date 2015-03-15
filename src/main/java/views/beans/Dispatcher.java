@@ -38,6 +38,8 @@ public class Dispatcher extends HttpServlet {
 		switch (action) {
 		case "verVotos":
 			VerVotosBean votos = new VerVotosBean();
+			votos.setidTema(Integer.valueOf(request.getParameter("tema")));
+			votos.setControllerFactory(controller);
 			request.setAttribute(action, votos);
 			view = action;
 			break;
@@ -99,7 +101,7 @@ public class Dispatcher extends HttpServlet {
 			request.setAttribute(action, tema);
 			view = tema.process();
 			break;
-			
+
 		case "eliminarTema":
 			EliminarTemaBean eliminar = new EliminarTemaBean();
 			eliminar.setidTema(Integer.valueOf(request.getParameter("tema")));
