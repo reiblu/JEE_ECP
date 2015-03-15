@@ -10,7 +10,7 @@ public class AnadirTemaEjb implements AnadirTema {
 	@Override
 	public void nuevoTema(String nombre, String pregunta) {
 		TemaDao tema = DaoFactory.getFactory().getTemaDao();
-		Tema t1 = new Tema(nombre, pregunta);
+		Tema t1 = new Tema(pregunta, nombre);
 		tema.create(t1);
 		
 	}

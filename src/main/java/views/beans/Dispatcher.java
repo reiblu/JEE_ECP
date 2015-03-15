@@ -91,7 +91,7 @@ public class Dispatcher extends HttpServlet {
 			view = votar.process();
 			break;
 
-		case "eliminarTema":
+		case "altaTema":
 			AltaTemaBean tema = new AltaTemaBean();
 			tema.setNombre(request.getParameter("tema"));
 			tema.setPregunta(request.getParameter("pregunta"));
@@ -100,7 +100,7 @@ public class Dispatcher extends HttpServlet {
 			view = tema.process();
 			break;
 			
-		case "altaTema":
+		case "eliminarTema":
 			EliminarTemaBean eliminar = new EliminarTemaBean();
 			eliminar.setidTema(Integer.valueOf(request.getParameter("tema")));
 			eliminar.setControllerFactory(controller);
