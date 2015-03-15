@@ -15,5 +15,9 @@
 		<a href="/jee/jsp/verVotos">Ver votos</a>
 	</p>
 	
+	<p>
+		<a href="/jee/jsp/anadirTema">Ver votos</a>
+	</p>
+	
 </body>
 </html>
