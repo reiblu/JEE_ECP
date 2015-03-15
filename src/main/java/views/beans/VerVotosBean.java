@@ -11,7 +11,7 @@ public class VerVotosBean {
 
 	private ControllerFactory controllerFactory;
 	
-	private int numVotos;
+	private long numVotos;
 	
 	private int mediaValoracion;
 
@@ -29,7 +29,7 @@ public class VerVotosBean {
 	
 	
 
-	public int getNumVotos() {
+	public long getNumVotos() {
 		return numVotos;
 	}
 

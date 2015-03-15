@@ -16,7 +16,7 @@ public class VerVotosEjb implements VerVotos {
 	}
 
 	@Override
-	public int getNumVotos(int idTema) {
+	public long getNumVotos(int idTema) {
 		VotoDao votodao = DaoFactory.getFactory().getVotoDao();
 		return votodao.getNumVotos(idTema);
 	}

@@ -6,7 +6,7 @@ public interface VerVotos {
 
 	Tema getTema(int idTema);
 
-	int getNumVotos(int idTema);
+	long getNumVotos(int idTema);
 
 	int getValoracionMedia(int idTema);
 

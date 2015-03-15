@@ -30,7 +30,7 @@ public class VotoDaoJpa extends GenericDaoJpa<Voto, Integer> implements VotoDao 
     	
     }
     
-    public int getNumVotos(int idTema){
+    public long getNumVotos(int idTema){
     	
     	EntityManager entityManager = DaoJpaFactory.getEntityManagerFactory().createEntityManager();
     	CriteriaBuilder cb = entityManager.getCriteriaBuilder();
@@ -42,7 +42,7 @@ public class VotoDaoJpa extends GenericDaoJpa<Voto, Integer> implements VotoDao 
     	Predicate predicate = cb.equal(root.get("voto").get("Tema"),idTema);
         query.where(predicate);
         
-    	return entityManager.createQuery(cb).getSingleResult;
+    	return entityManager.createQuery(query).getSingleResult();
     }
     
     public int getValorMedia(int idTema){
