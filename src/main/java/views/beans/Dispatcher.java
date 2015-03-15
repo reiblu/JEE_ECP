@@ -54,6 +54,12 @@ public class Dispatcher extends HttpServlet {
 			request.setAttribute(action, temas);
 			view = action;
 			break;
+		case "altaTema":
+			AltaTemaBean tema = new AltaTemaBean();
+			tema.setControllerFactory(controller);
+			request.setAttribute(action, tema);
+			view = action;
+			break;
 		default:
 			view = "home";
 		}
@@ -86,6 +92,15 @@ public class Dispatcher extends HttpServlet {
 			break;
 
 		case "eliminarTema":
+			AltaTemaBean tema = new AltaTemaBean();
+			tema.setNombre(request.getParameter("tema"));
+			tema.setPregunta(request.getParameter("pregunta"));
+			tema.setControllerFactory(controller);
+			request.setAttribute(action, tema);
+			view = tema.process();
+			break;
+			
+		case "altaTema":
 			EliminarTemaBean eliminar = new EliminarTemaBean();
 			eliminar.setidTema(Integer.valueOf(request.getParameter("tema")));
 			eliminar.setControllerFactory(controller);
