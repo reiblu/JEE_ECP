@@ -58,7 +58,7 @@ public class VerVotosBean {
 	public void update() {
 		this.tema = controllerFactory.getVerVotosController().getTema(idTema);
 		this.numVotos = controllerFactory.getVerVotosController().getNumVotos(idTema);
-		this.mediaValoracion = controllerFactory.getVerVotosController().getValoracionMedia(idTema);
+		//this.mediaValoracion = controllerFactory.getVerVotosController().getValoracionMedia(idTema);
 	}
 
 }

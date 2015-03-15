@@ -52,7 +52,7 @@ public class VotoDaoJdbc extends GenericDaoJdbc<Voto, Integer> implements VotoDa
 	}
 
 	@Override
-	public int getNumVotos(int idTema) {
+	public long getNumVotos(int idTema) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

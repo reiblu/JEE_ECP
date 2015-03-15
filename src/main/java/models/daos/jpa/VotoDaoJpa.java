@@ -39,7 +39,7 @@ public class VotoDaoJpa extends GenericDaoJpa<Voto, Integer> implements VotoDao 
     	Root<Voto> root = query.from(Voto.class);
     	
     	query.select(cb.count(root));
-    	Predicate predicate = cb.equal(root.get("voto").get("Tema"),idTema);
+    	Predicate predicate = cb.equal(root.get("tema").get("id"),idTema);
         query.where(predicate);
         
     	return entityManager.createQuery(query).getSingleResult();
