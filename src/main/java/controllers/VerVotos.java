@@ -9,6 +9,6 @@ public interface VerVotos {
 
 	long getNumVotos(int idTema);
 
-    int getValoracionMedia(int idTema, Estudios estudios);
+    double getValoracionMedia(int idTema, Estudios estudios);
 
 }

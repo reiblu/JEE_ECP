@@ -23,9 +23,9 @@ public class VerVotosEjb implements VerVotos {
 	}
 
     @Override
-    public int getValoracionMedia(int idTema, Estudios estudios) {
-        // TODO Auto-generated method stub
-        return 0;
+    public double getValoracionMedia(int idTema, Estudios estudios) {
+        VotoDao votodao = DaoFactory.getFactory().getVotoDao();
+        return votodao.getValoracionMedia(idTema, estudios);
     }
 
 	

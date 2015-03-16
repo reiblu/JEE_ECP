@@ -47,8 +47,21 @@ public class VotoDaoJpa extends GenericDaoJpa<Voto, Integer> implements VotoDao 
         return entityManager.createQuery(query).getSingleResult();
     }
 
-    public double getValorMedia(int idTema, Estudios estudio) {
-        return 0;
+    public double getValoracionMedia(int idTema, Estudios estudio) {
+        EntityManager entityManager = DaoJpaFactory.getEntityManagerFactory().createEntityManager();
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Double> query = cb.createQuery(Double.class);
+
+        Root<Voto> root = query.from(Voto.class);
+        
+        query.multiselect(cb.avg(root.get("valoracion")));
+        Predicate p = cb.equal(root.get("tema").get("id"), idTema);
+        Predicate p1 = cb.equal(root.get("estudios"), estudio);
+        Predicate p2 = cb.and(p,p1);
+        
+        query.where(p2);
+        
+        return entityManager.createQuery(query).getSingleResult();
     }
 
 }
