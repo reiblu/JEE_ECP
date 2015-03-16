@@ -9,5 +9,12 @@
 <h:body>
     <h3>Ver Temas</h3>
     
+    <h:form id="temas">
+    <p>h:selectOneListbox:</p>
+            <h:selectOneListbox value="#{temas.temas}">
+                <f:selectItems value="#{temas.temas}" />
+            </h:selectOneListbox>
+    </h:form>
+    
 </h:body>
 </html>
