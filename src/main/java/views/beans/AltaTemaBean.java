@@ -1,12 +1,14 @@
 package views.beans;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 
 import controllers.ControllerFactory;
 
 @ManagedBean
 public class AltaTemaBean {
 	
+    @ManagedProperty(value = "#{controllerFactory}")
 	private ControllerFactory controllerFactory;
 	
 	private String nombre;

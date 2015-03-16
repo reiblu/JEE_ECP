@@ -1,6 +1,7 @@
 package views.beans;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 
 import controllers.ControllerFactory;
 
@@ -11,6 +12,7 @@ public class EliminarTemaBean {
 	
 	private int auth;
 
+	@ManagedProperty(value = "#{controllerFactory}")
 	private ControllerFactory controllerFactory;
 
 	public EliminarTemaBean() {

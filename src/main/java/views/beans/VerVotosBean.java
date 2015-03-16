@@ -1,6 +1,7 @@
 package views.beans;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 
 import models.entities.Tema;
 import controllers.ControllerFactory;
@@ -12,6 +13,7 @@ public class VerVotosBean {
 
 	private Tema tema;
 
+	@ManagedProperty(value = "#{controllerFactory}")
 	private ControllerFactory controllerFactory;
 	
 	private long numVotos;

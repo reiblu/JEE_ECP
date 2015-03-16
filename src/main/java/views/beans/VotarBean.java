@@ -1,6 +1,7 @@
 package views.beans;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 
 import models.entities.Tema;
 import models.utils.Estudios;
@@ -21,6 +22,7 @@ public class VotarBean {
 
     private String errorMsg;
 
+    @ManagedProperty(value = "#{controllerFactory}")
     private ControllerFactory controllerFactory;
 
     public VotarBean() {

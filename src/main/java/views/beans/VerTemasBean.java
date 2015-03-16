@@ -3,6 +3,7 @@ package views.beans;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 
 import models.entities.Tema;
 
@@ -16,7 +17,10 @@ public class VerTemasBean {
     private List<Tema> temas;
 
     private String errorMsg;
+    
+    private String nombre;
 
+    @ManagedProperty(value = "#{controllerFactory}")
     private ControllerFactory controllerFactory;
 
     public VerTemasBean() {
@@ -48,6 +52,14 @@ public class VerTemasBean {
     public void setControllerFactory(ControllerFactory controller) {
         this.controllerFactory = controller;
         
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
   
 
