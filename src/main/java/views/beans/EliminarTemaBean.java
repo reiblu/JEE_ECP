@@ -5,6 +5,8 @@ import controllers.ControllerFactory;
 public class EliminarTemaBean {
 
 	private int idTema;
+	
+	private int auth;
 
 	private ControllerFactory controllerFactory;
 
@@ -29,10 +31,22 @@ public class EliminarTemaBean {
 		this.controllerFactory = controller;
 
 	}
+	
+	 public void setAuth(Integer auth) {
+	        this.auth = auth;
+	        
+	    }
 
 	public String process() {
-		controllerFactory.getEliminarController().eliminar(idTema);
-		return "home";
+	    if(auth == 666){
+	        controllerFactory.getEliminarController().eliminar(idTema);
+	        return "home";
+	    }else{
+	        System.out.println("No autorizado");
+	        return "error";
+	    }
 	}
+
+   
 
 }

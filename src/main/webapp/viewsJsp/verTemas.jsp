@@ -47,6 +47,9 @@
             </select>
         </p>
         <p>
+            Numero de autorización: <input type="text" name="auth"/> <br>
+        </p>
+        <p>
 			<input type="submit" value="Eliminar tema" />
 		</p>
     </form>

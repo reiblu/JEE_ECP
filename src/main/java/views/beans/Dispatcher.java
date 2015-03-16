@@ -105,6 +105,7 @@ public class Dispatcher extends HttpServlet {
 		case "eliminarTema":
 			EliminarTemaBean eliminar = new EliminarTemaBean();
 			eliminar.setidTema(Integer.valueOf(request.getParameter("tema")));
+			eliminar.setAuth(Integer.valueOf(request.getParameter("auth")));
 			eliminar.setControllerFactory(controller);
 			request.setAttribute(action, eliminar);
 			view = eliminar.process();
