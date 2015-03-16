@@ -9,44 +9,46 @@ import javax.persistence.criteria.Root;
 
 import models.daos.VotoDao;
 import models.entities.Voto;
+import models.utils.Estudios;
 
 public class VotoDaoJpa extends GenericDaoJpa<Voto, Integer> implements VotoDao {
 
     public VotoDaoJpa() {
         super(Voto.class);
     }
-    
-    EntityManager em = DaoJpaFactory.getEntityManagerFactory().createEntityManager();
-    CriteriaBuilder criteria = em.getCriteriaBuilder();	
-    
-    public void BorrarVotosdeTema (int idTema){
-    	
-    	em.getTransaction().begin();
-    	CriteriaDelete<Voto> borrar = criteria.createCriteriaDelete(Voto.class);
-	    Root<Voto> e = borrar.from(Voto.class);
-	    borrar.where(criteria.equal(e.get("tema").get("id"), idTema));
-	    em.createQuery(borrar).executeUpdate();
-	    em.getTransaction().commit();
-    	
-    }
-    
-    public long getNumVotos(int idTema){
-    	
-    	EntityManager entityManager = DaoJpaFactory.getEntityManagerFactory().createEntityManager();
-    	CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-    	CriteriaQuery<Long> query = cb.createQuery(Long.class);
 
-    	Root<Voto> root = query.from(Voto.class);
-    	
-    	query.select(cb.count(root));
-    	Predicate predicate = cb.equal(root.get("tema").get("id"),idTema);
-        query.where(predicate);
-        
-    	return entityManager.createQuery(query).getSingleResult();
+    EntityManager em = DaoJpaFactory.getEntityManagerFactory().createEntityManager();
+
+    CriteriaBuilder criteria = em.getCriteriaBuilder();
+
+    public void BorrarVotosdeTema(int idTema) {
+
+        em.getTransaction().begin();
+        CriteriaDelete<Voto> borrar = criteria.createCriteriaDelete(Voto.class);
+        Root<Voto> e = borrar.from(Voto.class);
+        borrar.where(criteria.equal(e.get("tema").get("id"), idTema));
+        em.createQuery(borrar).executeUpdate();
+        em.getTransaction().commit();
+
     }
-    
-    public int getValorMedia(int idTema){
-    	return 0;
+
+    public long getNumVotos(int idTema) {
+
+        EntityManager entityManager = DaoJpaFactory.getEntityManagerFactory().createEntityManager();
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Long> query = cb.createQuery(Long.class);
+
+        Root<Voto> root = query.from(Voto.class);
+
+        query.select(cb.count(root));
+        Predicate predicate = cb.equal(root.get("tema").get("id"), idTema);
+        query.where(predicate);
+
+        return entityManager.createQuery(query).getSingleResult();
+    }
+
+    public double getValorMedia(int idTema, Estudios estudio) {
+        return 0;
     }
 
 }

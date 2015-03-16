@@ -22,7 +22,7 @@
             	Pregunta: ${votar.tema.pregunta} <br>
         </p>
          <p>
-            Temas: <select name="estudios">
+            Estudios: <select name="estudios">
                 <c:forEach var="est" items="${votar.estudios}">
                     <option value="${est.name()}">${est.name()}</option>
                 </c:forEach>

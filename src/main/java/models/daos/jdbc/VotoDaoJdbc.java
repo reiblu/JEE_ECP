@@ -5,6 +5,7 @@ import java.util.List;
 import models.daos.VotoDao;
 import models.entities.Tema;
 import models.entities.Voto;
+import models.utils.Estudios;
 
 public class VotoDaoJdbc extends GenericDaoJdbc<Voto, Integer> implements VotoDao {
 
@@ -58,7 +59,7 @@ public class VotoDaoJdbc extends GenericDaoJdbc<Voto, Integer> implements VotoDa
 	}
 
 	@Override
-	public int getValorMedia(int idTema) {
+	public double getValorMedia(int idTema, Estudios estudio) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

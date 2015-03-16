@@ -1,6 +1,7 @@
 package controllers;
 
 import models.entities.Tema;
+import models.utils.Estudios;
 
 public interface VerVotos {
 
@@ -8,6 +9,6 @@ public interface VerVotos {
 
 	long getNumVotos(int idTema);
 
-	int getValoracionMedia(int idTema);
+    int getValoracionMedia(int idTema, Estudios estudios);
 
 }

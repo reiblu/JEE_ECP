@@ -1,6 +1,7 @@
 package models.daos;
 
 import models.entities.Voto;
+import models.utils.Estudios;
 
 public interface VotoDao extends GenericDao<Voto,Integer> {
 
@@ -8,6 +9,6 @@ public interface VotoDao extends GenericDao<Voto,Integer> {
 
 	public long getNumVotos(int idTema);
 
-	public int getValorMedia(int idTema);
+	public double getValorMedia(int idTema, Estudios estudios);
 	
 }

@@ -4,6 +4,7 @@ import models.daos.DaoFactory;
 import models.daos.TemaDao;
 import models.daos.VotoDao;
 import models.entities.Tema;
+import models.utils.Estudios;
 import controllers.VerVotos;
 
 public class VerVotosEjb implements VerVotos {
@@ -21,10 +22,12 @@ public class VerVotosEjb implements VerVotos {
 		return votodao.getNumVotos(idTema);
 	}
 
-	@Override
-	public int getValoracionMedia(int idTema) {
-		VotoDao votodao = DaoFactory.getFactory().getVotoDao();
-		return votodao.getValorMedia(idTema);
-	}
+    @Override
+    public int getValoracionMedia(int idTema, Estudios estudios) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+	
 
 }

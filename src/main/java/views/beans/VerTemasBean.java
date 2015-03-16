@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 
 import models.entities.Tema;
+import models.utils.Estudios;
 
 import org.apache.logging.log4j.LogManager;
 
@@ -18,6 +19,7 @@ public class VerTemasBean {
 
     private String errorMsg;
     
+    @ManagedProperty(value = "#{tema.getNombre()}")
     private String nombre;
 
     @ManagedProperty(value = "#{controllerFactory}")
@@ -25,6 +27,10 @@ public class VerTemasBean {
 
     public VerTemasBean() {
 
+    }
+    
+    public Estudios[] getEstudios() {
+        return Estudios.values();
     }
 
     public String getErrorMsg() {

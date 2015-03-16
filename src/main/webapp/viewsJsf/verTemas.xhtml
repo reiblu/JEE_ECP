@@ -9,12 +9,15 @@
 <h:body>
     <h3>Ver Temas</h3>
      #{verTemasBean.update()}
+     #{verTemasBean.temas}
     <h:form id="verTemas">
-    <p>h:selectOneListbox:</p>
+    <p>Lista de los temas para seleccionar:</p>
             <h:selectOneListbox value="#{verTemas.nombre}">
-                <f:selectItems value="#{verTemas.temas}" />
+                <f:selectItems value="#{verTemas.temas.nombre}" />
             </h:selectOneListbox>
-    </h:form>
-    
+    <p>
+            <h:commandButton value="Votar" type="submit"
+                action="#{verTemas.process}" /> </p>
+     </h:form>
 </h:body>
 </html>

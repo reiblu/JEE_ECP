@@ -39,6 +39,7 @@ public class Dispatcher extends HttpServlet {
 		case "verVotos":
 			VerVotosBean votos = new VerVotosBean();
 			votos.setidTema(Integer.valueOf(request.getParameter("tema")));
+			votos.setEstudios(request.getParameter("estudios"));
 			votos.setControllerFactory(controller);
 			request.setAttribute(action, votos);
 			view = action;

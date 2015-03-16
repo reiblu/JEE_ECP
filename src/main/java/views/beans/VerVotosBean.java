@@ -4,6 +4,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 
 import models.entities.Tema;
+import models.utils.Estudios;
 import controllers.ControllerFactory;
 
 @ManagedBean
@@ -12,6 +13,8 @@ public class VerVotosBean {
 	private int idTema;
 
 	private Tema tema;
+	
+	private Estudios estudios; 
 
 	@ManagedProperty(value = "#{controllerFactory}")
 	private ControllerFactory controllerFactory;
@@ -59,11 +62,26 @@ public class VerVotosBean {
 		this.idTema = idTema;
 
 	}
+	
+	
 
-	public void update() {
+	public Estudios getEstudios() {
+        return estudios;
+    }
+
+    public void setEstudios(Estudios estudios) {
+        this.estudios = estudios;
+    }
+
+    public void update() {
 		this.tema = controllerFactory.getVerVotosController().getTema(idTema);
 		this.numVotos = controllerFactory.getVerVotosController().getNumVotos(idTema);
-		//this.mediaValoracion = controllerFactory.getVerVotosController().getValoracionMedia(idTema);
+		this.mediaValoracion = controllerFactory.getVerVotosController().getValoracionMedia(idTema, estudios);
 	}
+
+    public void setEstudios(String estudios) {
+        this.estudios = Estudios.valueOf(estudios);
+       
+    }
 
 }

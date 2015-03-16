@@ -35,6 +35,13 @@
             </select>
         </p>
         <p>
+            Estudios: <select name="estudios">
+                <c:forEach var="est" items="${temaBean.estudios}">
+                    <option value="${est.name()}">${est.name()}</option>
+                </c:forEach>
+            </select>
+        </p>
+        <p>
 			<input type="submit" value="Ver Votos del Tema" />
 		</p>
     </form>
