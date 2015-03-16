@@ -2,12 +2,15 @@ package views.beans;
 
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+
 import models.entities.Tema;
 
 import org.apache.logging.log4j.LogManager;
 
 import controllers.ControllerFactory;
 
+@ManagedBean
 public class VerTemasBean {
 	
     private List<Tema> temas;

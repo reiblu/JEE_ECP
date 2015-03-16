@@ -1,8 +1,11 @@
 package views.beans;
 
+import javax.faces.bean.ManagedBean;
+
 import models.entities.Tema;
 import controllers.ControllerFactory;
 
+@ManagedBean
 public class VerVotosBean {
 
 	private int idTema;

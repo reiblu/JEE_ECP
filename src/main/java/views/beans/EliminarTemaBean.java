@@ -1,7 +1,10 @@
 package views.beans;
 
+import javax.faces.bean.ManagedBean;
+
 import controllers.ControllerFactory;
 
+@ManagedBean
 public class EliminarTemaBean {
 
 	private int idTema;

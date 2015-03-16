@@ -1,7 +1,10 @@
 package views.beans;
 
+import javax.faces.bean.ManagedBean;
+
 import controllers.ControllerFactory;
 
+@ManagedBean
 public class AltaTemaBean {
 	
 	private ControllerFactory controllerFactory;

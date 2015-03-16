@@ -1,86 +1,89 @@
 package views.beans;
 
+import javax.faces.bean.ManagedBean;
+
 import models.entities.Tema;
 import models.utils.Estudios;
 import controllers.ControllerFactory;
 
+@ManagedBean
 public class VotarBean {
 
-	private int idTema;
+    private int idTema;
 
-	private Tema tema;
-	
-	private int valoracion;
-	
-	private String ipUsuario;
-	
-	private Estudios estudios;
+    private Tema tema;
 
-	private String errorMsg;
+    private int valoracion;
 
-	private ControllerFactory controllerFactory;
+    private String ipUsuario;
 
-	public VotarBean() {
+    private Estudios estudios;
 
-	}
+    private String errorMsg;
 
-	public Tema getTema() {
-		return tema;
-	}
+    private ControllerFactory controllerFactory;
 
-	public void setTema(Tema tema) {
-		this.tema = tema;
-	}
+    public VotarBean() {
 
-	public String getErrorMsg() {
-		return errorMsg;
-	}
+    }
 
-	public void setErrorMsg(String errorMsg) {
-		this.errorMsg = errorMsg;
-	}
+    public Tema getTema() {
+        return tema;
+    }
 
-	public void setControllerFactory(ControllerFactory controller) {
-		this.controllerFactory = controller;
+    public void setTema(Tema tema) {
+        this.tema = tema;
+    }
 
-	}
+    public String getErrorMsg() {
+        return errorMsg;
+    }
 
-	public void setidTema(int attribute) {
+    public void setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
+    }
 
-		idTema = attribute;
+    public void setControllerFactory(ControllerFactory controller) {
+        this.controllerFactory = controller;
 
-	}
-	
-	public Estudios[] getEstudios(){
-		return Estudios.values();
-	}
+    }
 
-	public void update() {
+    public void setidTema(int attribute) {
 
-		this.tema = controllerFactory.getVotarController().getTema(idTema);
+        idTema = attribute;
 
-	}
+    }
 
-	public String process() {
-			update();
-			controllerFactory.getVotarController().votar(estudios, ipUsuario, valoracion, tema);
-			return "home";
-		
-	}
+    public Estudios[] getEstudios() {
+        return Estudios.values();
+    }
 
-	public void setValoracion(Integer valoracion) {
-		this.valoracion = valoracion;
-		
-	}
+    public void update() {
 
-	public void setEstudios(String estudio) {
-		this.estudios = Estudios.valueOf(estudio);
-		
-	}
+        this.tema = controllerFactory.getVotarController().getTema(idTema);
 
-	public void setIpusuario(String ipUser) {
-		this.ipUsuario = ipUser;
-		
-	}
+    }
+
+    public String process() {
+        update();
+        controllerFactory.getVotarController().votar(estudios, ipUsuario, valoracion, tema);
+        return "home";
+
+    }
+
+    public void setValoracion(Integer valoracion) {
+        this.valoracion = valoracion;
+
+    }
+
+    public void setEstudios(String estudio) {
+        this.estudios = Estudios.valueOf(estudio);
+
+    }
+
+    public void setIpusuario(String ipUser) {
+        this.ipUsuario = ipUser;
+
+    }
 
 }
