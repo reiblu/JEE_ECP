@@ -1,25 +1,54 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 	<title>Ver Temas</title>
 </h:head>
 <h:body>
-	<h3>Ver Temas</h3>
+	<h2>Ver Temas</h2>
      #{verTemasBean.update()}
-     #{verTemasBean.temas}
+    <h3>Vota un tema</h3>
     <h:form id="verTemas">
 		<p>Lista de los temas para seleccionar:</p>
-		<ul>
-			<ui:repeat var="tema" value="#{verTemasBean.temas}">
-				<li>#{tema.id}, #{tema.nombre}, #{tema.pregunta}</li>
-			</ui:repeat>
-		</ul>
+		<h:selectOneMenu id="temas">
+			<f:selectItems value="#{verTemasBean.temas}" var="tema"
+				itemLabel="#{tema.nombre}" itemValue="#{tema.id}" />
+		</h:selectOneMenu>
+
 		<p>
 			<h:commandButton value="Votar" type="submit" action="votar" />
+		</p>
+	</h:form>
+	<h3>Mira los votos de un tema</h3>
+	<h:form id="verVotos">
+		<p>Lista de los temas para seleccionar:</p>
+		<h:selectOneMenu id="temas">
+			<f:selectItems value="#{verTemasBean.temas}" var="tema"
+				itemLabel="#{tema.nombre}" itemValue="#{tema.id}" />
+		</h:selectOneMenu>
+		<p>Lista de los niveles de estudio a seleccionar:</p>
+        <h:selectOneMenu id="est">
+            <f:selectItems value="#{verTemasBean.estudios}" var="estudio"
+                itemLabel="#{estudio.name()}" itemValue="#{estudio.name()}" />
+        </h:selectOneMenu>
+
+		<p>
+			<h:commandButton value="Ver Votos" type="submit" action="verVotos" />
+		</p>
+	</h:form>
+	<h3>Elimina un tema</h3>
+	<h:form id="eliminarTema">
+		<p>Lista de los temas para seleccionar:</p>
+		<h:selectOneMenu id="temas">
+			<f:selectItems value="#{verTemasBean.temas}" var="tema"
+				itemLabel="#{tema.nombre}" itemValue="#{tema.id}" />
+		</h:selectOneMenu>
+
+		<p>
+			<h:commandButton value="Elminar Tema" type="submit" action="home" />
 		</p>
 	</h:form>
 </h:body>

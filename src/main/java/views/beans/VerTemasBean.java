@@ -14,6 +14,8 @@ import controllers.ControllerFactory;
 
 @ManagedBean
 public class VerTemasBean {
+    
+    private String oneListbox;
 	
     @ManagedProperty (value="#{temas}")
     private List<Tema> temas;
@@ -40,6 +42,14 @@ public class VerTemasBean {
 
     public void setErrorMsg(String errorMsg) {
         this.errorMsg = errorMsg;
+    }
+
+    public String getOneListbox() {
+        return oneListbox;
+    }
+
+    public void setOneListbox(String oneListbox) {
+        this.oneListbox = oneListbox;
     }
 
     public List<Tema> getTemas() {
