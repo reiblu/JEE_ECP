@@ -12,6 +12,7 @@
     <h2>
         Vista de <b>Temas</b>
     </h2>
+    <h3>Vota un tema</h3>
     <c:set var="temaBean" scope="request" value="${verTemas}" />
     <div>${temaBean.update()}</div>
     <form action="/jee/jsp/procesarVoto" method="post">
@@ -26,6 +27,7 @@
 			<input type="submit" value="Votar tema" />
 		</p>
     </form>
+    <h3>Mira los votos de un tema</h3>
     <form action="/jee/jsp/verVotos" method="post">
         <p>
             Temas: <select name="tema">
@@ -45,6 +47,7 @@
 			<input type="submit" value="Ver Votos del Tema" />
 		</p>
     </form>
+    <h3>Elimina un tema</h3>
     <form action="/jee/jsp/eliminarTema" method="post">
         <p>
             Temas: <select name="tema">

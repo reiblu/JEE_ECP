@@ -85,11 +85,7 @@ public class VotoDaoJpa extends GenericDaoJpa<Voto, Integer> implements VotoDao 
         Predicate p2 = cb.and(p, p1);
         query.where(p2);
 
-        System.out.println(p2);
-
-        double resultado = entityManager.createQuery(query).getSingleResult();
-        
-        return resultado;
+        return entityManager.createQuery(query).getSingleResult();
         }
 
     }
