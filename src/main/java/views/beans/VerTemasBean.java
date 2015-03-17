@@ -15,6 +15,7 @@ import controllers.ControllerFactory;
 @ManagedBean
 public class VerTemasBean {
 	
+    @ManagedProperty (value="#{temas}")
     private List<Tema> temas;
 
     private String errorMsg;
