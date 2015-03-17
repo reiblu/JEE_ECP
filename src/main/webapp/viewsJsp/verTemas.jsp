@@ -14,7 +14,7 @@
     </h2>
     <c:set var="temaBean" scope="request" value="${verTemas}" />
     <div>${temaBean.update()}</div>
-    <form action="/jee/jsp/votar" method="get">
+    <form action="/jee/jsp/procesarVoto" method="post">
         <p>
             Temas: <select name="tema">
                 <c:forEach var="tema" items="${temaBean.temas}">
@@ -26,7 +26,7 @@
 			<input type="submit" value="Votar tema" />
 		</p>
     </form>
-    <form action="/jee/jsp/verVotos" method="get">
+    <form action="/jee/jsp/verVotos" method="post">
         <p>
             Temas: <select name="tema">
                 <c:forEach var="tema" items="${temaBean.temas}">

@@ -36,21 +36,7 @@ public class Dispatcher extends HttpServlet {
 
 		String view;
 		switch (action) {
-		case "verVotos":
-			VerVotosBean votos = new VerVotosBean();
-			votos.setidTema(Integer.valueOf(request.getParameter("tema")));
-			votos.setEstudios(request.getParameter("estudios"));
-			votos.setControllerFactory(controller);
-			request.setAttribute(action, votos);
-			view = action;
-			break;
-		case "votar":
-			VotarBean votar = new VotarBean();
-			votar.setidTema(Integer.valueOf(request.getParameter("tema")));
-			votar.setControllerFactory(controller);
-			request.setAttribute(action, votar);
-			view = action;
-			break;
+		
 		case "verTemas":
 			VerTemasBean temas = new VerTemasBean();
 			temas.setControllerFactory(controller);
@@ -77,21 +63,40 @@ public class Dispatcher extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getPathInfo().substring(1);
+		String actionAux;
 		LogManager.getLogger(Dispatcher.class).debug("Action: " + action);
 
 		String view = "home";
 		switch (action) {
+		
+		case "procesarVoto":
+            VotarBean votar = new VotarBean();
+            votar.setidTema(Integer.valueOf(request.getParameter("tema")));
+            votar.setControllerFactory(controller);
+            actionAux = "votar";
+            request.setAttribute(actionAux, votar);
+            view = actionAux;
+            break;
+		
+		case "verVotos":
+            VerVotosBean votos = new VerVotosBean();
+            votos.setidTema(Integer.valueOf(request.getParameter("tema")));
+            votos.setEstudios(request.getParameter("estudios"));
+            votos.setControllerFactory(controller);
+            request.setAttribute(action, votos);
+            view = action;
+            break;
 
 		case "votar":
-			VotarBean votar = new VotarBean();
-			votar.setidTema(Integer.valueOf(request.getParameter("tema")));
-			votar.setValoracion(Integer.valueOf(request
+			VotarBean votar1 = new VotarBean();
+			votar1.setidTema(Integer.valueOf(request.getParameter("tema")));
+			votar1.setValoracion(Integer.valueOf(request
 					.getParameter("valoracion")));
-			votar.setEstudios(request.getParameter("estudios"));
-			votar.setIpusuario(request.getRemoteAddr());
-			votar.setControllerFactory(controller);
-			request.setAttribute(action, votar);
-			view = votar.process();
+			votar1.setEstudios(request.getParameter("estudios"));
+			votar1.setIpusuario(request.getRemoteAddr());
+			votar1.setControllerFactory(controller);
+			request.setAttribute(action, votar1);
+			view = votar1.process();
 			break;
 
 		case "altaTema":
