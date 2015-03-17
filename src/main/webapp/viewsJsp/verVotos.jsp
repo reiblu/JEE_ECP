@@ -19,7 +19,7 @@
             	Nombre: ${votos.tema.nombre} <br>
             	Pregunta: ${votos.tema.pregunta} <br>
             	Numero de votos: ${votos.numVotos} <br>
-            	Media de votos por nivel: ${votos.mediaValoracion}
+            	Media de votos por nivel escogido: ${votos.mediaValoracion}
             	 
         </p>
 

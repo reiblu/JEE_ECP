@@ -14,8 +14,8 @@
     <h:form id="verTemas">
 		<p>Lista de los temas para seleccionar:</p>
 		<ul>
-			<ui:repeat var="tema" value="#{VerTemasBean.temas}">
-				<li>#{tema.nombre}</li>
+			<ui:repeat var="tema" value="#{verTemasBean.temas}">
+				<li>#{tema.id}, #{tema.nombre}, #{tema.pregunta}</li>
 			</ui:repeat>
 		</ul>
 		<p>
