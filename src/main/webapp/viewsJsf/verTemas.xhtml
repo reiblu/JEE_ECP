@@ -9,17 +9,17 @@
 </h:head>
 <h:body>
 	<h2>Ver Temas</h2>
-     #{verTemasBean.update()}
+   
     <h3>Vota un tema</h3>
     <h:form id="verTemas">
 		<p>Lista de los temas para seleccionar:</p>
-		<h:selectOneMenu id="temas">
+		<h:selectOneMenu value="#{verTemasBean.idTema}">  
 			<f:selectItems value="#{verTemasBean.temas}" var="tema"
 				itemLabel="#{tema.nombre}" itemValue="#{tema.id}" />
 		</h:selectOneMenu>
 
 		<p>
-			<h:commandButton value="Votar" type="submit" action="votar" />
+			<h:commandButton value="Votar" action="#{verTemasBean.votar}" />
 		</p>
 	</h:form>
 	<h3>Mira los votos de un tema</h3>
@@ -36,7 +36,7 @@
         </h:selectOneMenu>
 
 		<p>
-			<h:commandButton value="Ver Votos" type="submit" action="verVotos" />
+			<h:commandButton value="Ver Votos" action="#{verTemasBean.verVotos}" /> 
 		</p>
 	</h:form>
 	<h3>Elimina un tema</h3>
@@ -47,8 +47,11 @@
 				itemLabel="#{tema.nombre}" itemValue="#{tema.id}" />
 		</h:selectOneMenu>
 
+        <p>Autorización:</p>
+        <h:inputText value="#{eliminarTemaBean.auth}" />
+
 		<p>
-			<h:commandButton value="Elminar Tema" type="submit" action="home" />
+			<h:commandButton value="Elminar Tema" action="#{verTemasBean.eliminarTema}" />
 		</p>
 	</h:form>
 </h:body>

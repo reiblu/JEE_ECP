@@ -7,37 +7,46 @@ import controllers.ControllerFactory;
 
 @ManagedBean
 public class AltaTemaBean {
-	
+
     @ManagedProperty(value = "#{controllerFactory}")
-	private ControllerFactory controllerFactory;
-	
-	private String nombre;
-	
-	private String pregunta;
-	
-	public AltaTemaBean(){
-		
-	}
+    private ControllerFactory controllerFactory;
 
+    @ManagedProperty(value = "#{nombre}")
+    private String nombre;
 
-	public void setControllerFactory(ControllerFactory controller) {
-		this.controllerFactory = controller;
-		
-	}
+    @ManagedProperty(value = "#{pregunta}")
+    private String pregunta;
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-		
-	}
+    public AltaTemaBean() {
 
-	public void setPregunta(String pregunta) {
-		this.pregunta = pregunta;
-		
-	}
+    }
 
-	public String process() {
-		controllerFactory.getanadirTemaController().nuevoTema(nombre, pregunta);
-		return "home";
-	}
+    public void setControllerFactory(ControllerFactory controller) {
+        this.controllerFactory = controller;
+
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+
+    }
+
+    public void setPregunta(String pregunta) {
+        this.pregunta = pregunta;
+
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getPregunta() {
+        return pregunta;
+    }
+
+    public String process() {
+        controllerFactory.getanadirTemaController().nuevoTema(nombre, pregunta);
+        return "home";
+    }
 
 }

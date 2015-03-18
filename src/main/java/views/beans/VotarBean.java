@@ -1,5 +1,6 @@
 package views.beans;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 
@@ -51,15 +52,14 @@ public class VotarBean {
     }
 
     public void setidTema(int attribute) {
-
         idTema = attribute;
-
     }
 
     public Estudios[] getEstudios() {
         return Estudios.values();
     }
 
+    @PostConstruct
     public void update() {
 
         this.tema = controllerFactory.getVotarController().getTema(idTema);

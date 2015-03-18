@@ -8,18 +8,20 @@
 </h:head>
 <h:body>
 	<h3>Votar</h3>
-     #{votarBean.update()}
-     <h:form id="verTemas">
+
+     <h:form >
 		<p>Tema escogido para votar</p>
-		<p>Nombre del tema: #{verTemas.tema.nombre}</p>
-		<p>Pregunta del tema: #{verTemas.tema.pregunta}</p>
-		<p>Lista de los estudios para seleccionar:</p>
-            <h:selectOneListbox value="#{verTemas.nombre}">
-                <f:selectItems value="#{verTemas.estudios}" />
-            </h:selectOneListbox>
+		#{votarBean.tema}
+		<p>Nombre del tema: #{votarBean.tema.nombre}</p>
+		<p>Pregunta del tema: #{votarBean.tema.pregunta}</p>
+		<p>Lista de los niveles de estudio a seleccionar:</p>
+        <h:selectOneMenu value="#{votarBean.estudios}">
+            <f:selectItems value="#{votarBean.estudios}" var="estudio"
+                itemLabel="#{estudio.name()}" itemValue="#{estudio.name()}" />
+        </h:selectOneMenu>
 
 		<p>
-			<h:commandButton value="Votar" type="submit" action="home" />
+			<h:commandButton value="Votar" action="#{votarBean.process}" />
 		</p>
 	</h:form>
 

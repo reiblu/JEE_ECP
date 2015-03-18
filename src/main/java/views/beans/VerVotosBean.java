@@ -1,5 +1,6 @@
 package views.beans;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 
@@ -69,6 +70,7 @@ public class VerVotosBean {
         this.estudios = estudios;
     }
 
+    @PostConstruct
     public void update() {
         this.tema = controllerFactory.getVerVotosController().getTema(idTema);
         this.numVotos = controllerFactory.getVerVotosController().getNumVotos(idTema);
