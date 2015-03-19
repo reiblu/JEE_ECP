@@ -1,109 +1,142 @@
 package views.beans;
 
+import java.util.Map;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import models.entities.Tema;
 import models.utils.Estudios;
 import controllers.ControllerFactory;
 
-@ManagedBean
+@ManagedBean(name = "votarBean")
 @SessionScoped
 public class VotarBean {
 
-    private int idTema;
+	private int idTema;
 
-    private Tema tema;
+	private Tema tema;
 
-    private int valoracion;
+	private int valoracion;
 
-    private String ipUsuario;
+	private String ipUsuario;
 
-    private Estudios estudios;
+	private Estudios nivelEstudios;
 
-    private String errorMsg;
-    
-    @ManagedProperty(value = "#{verTemasBean}")
-    private VerTemasBean verTemasBean;
-    
-    @ManagedProperty(value = "#{controllerFactory}")
-    private ControllerFactory controllerFactory;
+	private String errorMsg;
 
-    public VotarBean() {
+	@ManagedProperty(value = "#{verTemasBean}")
+	private VerTemasBean verTemasBean;
 
-    }
+	@ManagedProperty(value = "#{controllerFactory}")
+	private ControllerFactory controllerFactory;
 
-    public Tema getTema() {
-        return tema;
-    }
+	public VotarBean() {
 
-    public void setTema(Tema tema) {
-        this.tema = tema;
-    }
-    
-    
+	}
 
-    public int getValoracion() {
+	public Tema getTema() {
+		return tema;
+	}
+
+	public void setTema(Tema tema) {
+		this.tema = tema;
+	}
+
+	public int getValoracion() {
 		return valoracion;
 	}
 
 	public String getErrorMsg() {
-        return errorMsg;
-    }
-
-    public void setErrorMsg(String errorMsg) {
-        this.errorMsg = errorMsg;
-    }
-
-    public void setControllerFactory(ControllerFactory controller) {
-        this.controllerFactory = controller;
-
-    }
-    
-    
-
-    public void setVerTemasBean(VerTemasBean verTemasBean) {
-		this.verTemasBean = verTemasBean;
+		return errorMsg;
 	}
 
+	public void setErrorMsg(String errorMsg) {
+		this.errorMsg = errorMsg;
+	}
+
+	public void setControllerFactory(ControllerFactory controller) {
+		this.controllerFactory = controller;
+
+	}
+
+	public void setVerTemasBean(VerTemasBean verTemasBean) {
+		this.verTemasBean = verTemasBean;
+	 }
+
 	public void setidTema(int attribute) {
-        idTema = attribute;
-    }
+		idTema = attribute;
+	}
 
-    public Estudios[] getEstudios() {
-        return Estudios.values();
-    }
+	public Estudios[] getEstudios() {
+		return Estudios.values();
+	}
 
-    @PostConstruct
-    public void update() {
-    	
-    	idTema = Integer.valueOf(verTemasBean.getIdTema());
-        this.tema = controllerFactory.getVotarController().getTema(idTema);
+	public int getIdTema() {
+		return idTema;
+	}
 
-    }
+	@PostConstruct
+	public void updatejsf() {
+		idTema = Integer.valueOf(verTemasBean.getIdTema());
+		this.update();
+	}
 
-    public String process() {
-    	System.out.println("\n\n\nllegue\n\n\n");
-        controllerFactory.getVotarController().votar(estudios, ipUsuario, valoracion, tema);
-        return "home";
+	public void update() {
 
-    }
+		this.tema = controllerFactory.getVotarController().getTema(idTema);
 
-    public void setValoracion(Integer valoracion) {
-        this.valoracion = valoracion;
+	}
 
-    }
+	public String process() {
+		this.tema = controllerFactory.getVotarController().getTema(idTema);
+		if (ipUsuario == null) {
+			this.ipUsuario = this.getRemoteAddr();
+		}
+		controllerFactory.getVotarController().votar(nivelEstudios, ipUsuario,
+				valoracion, tema);
+		return "home";
 
-    public void setEstudios(String estudio) {
-        this.estudios = Estudios.valueOf(estudio);
+	}
 
-    }
+	public void setValoracion(Integer valoracion) {
+		this.valoracion = valoracion;
 
-    public void setIpusuario(String ipUser) {
-        this.ipUsuario = ipUser;
+	}
 
-    }
+	public void setEstudios(String estudio) {
+		this.nivelEstudios = Estudios.valueOf(estudio);
+
+	}
+
+	public void setValoracion(int valoracion) {
+		this.valoracion = valoracion;
+	}
+
+	public Estudios getNivelEstudios() {
+		return nivelEstudios;
+	}
+
+	public void setNivelEstudios(Estudios nivelEstudios) {
+		this.nivelEstudios = nivelEstudios;
+	}
+
+	public void setIpusuario(String ipUser) {
+		this.ipUsuario = ipUser;
+
+	}
+	
+	public String getRemoteAddr() {
+		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		String ipAddress = request.getHeader("X-FORWARDED-FOR");
+		if (ipAddress == null) {
+		    ipAddress = request.getRemoteAddr();
+		}
+		return ipAddress;
+	}
 
 }
