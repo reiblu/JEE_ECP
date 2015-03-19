@@ -3,12 +3,14 @@ package views.beans;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 
 import models.entities.Tema;
 import models.utils.Estudios;
 import controllers.ControllerFactory;
 
 @ManagedBean
+@SessionScoped
 public class VotarBean {
 
     private int idTema;
@@ -22,7 +24,10 @@ public class VotarBean {
     private Estudios estudios;
 
     private String errorMsg;
-
+    
+    @ManagedProperty(value = "#{verTemasBean}")
+    private VerTemasBean verTemasBean;
+    
     @ManagedProperty(value = "#{controllerFactory}")
     private ControllerFactory controllerFactory;
 
@@ -37,8 +42,14 @@ public class VotarBean {
     public void setTema(Tema tema) {
         this.tema = tema;
     }
+    
+    
 
-    public String getErrorMsg() {
+    public int getValoracion() {
+		return valoracion;
+	}
+
+	public String getErrorMsg() {
         return errorMsg;
     }
 
@@ -50,8 +61,14 @@ public class VotarBean {
         this.controllerFactory = controller;
 
     }
+    
+    
 
-    public void setidTema(int attribute) {
+    public void setVerTemasBean(VerTemasBean verTemasBean) {
+		this.verTemasBean = verTemasBean;
+	}
+
+	public void setidTema(int attribute) {
         idTema = attribute;
     }
 
@@ -61,13 +78,14 @@ public class VotarBean {
 
     @PostConstruct
     public void update() {
-
+    	
+    	idTema = Integer.valueOf(verTemasBean.getIdTema());
         this.tema = controllerFactory.getVotarController().getTema(idTema);
 
     }
 
     public String process() {
-        update();
+    	System.out.println("\n\n\nllegue\n\n\n");
         controllerFactory.getVotarController().votar(estudios, ipUsuario, valoracion, tema);
         return "home";
 

@@ -9,19 +9,21 @@
 <h:body>
 	<h3>Votar</h3>
 
-     <h:form >
+	<h:form>
 		<p>Tema escogido para votar</p>
-		#{votarBean.tema}
 		<p>Nombre del tema: #{votarBean.tema.nombre}</p>
 		<p>Pregunta del tema: #{votarBean.tema.pregunta}</p>
 		<p>Lista de los niveles de estudio a seleccionar:</p>
-        <h:selectOneMenu value="#{votarBean.estudios}">
-            <f:selectItems value="#{votarBean.estudios}" var="estudio"
-                itemLabel="#{estudio.name()}" itemValue="#{estudio.name()}" />
-        </h:selectOneMenu>
+		<h:selectOneMenu value="#{votarBean.estudios}">
+			<f:selectItems value="#{votarBean.estudios}" var="estudio"
+				itemLabel="#{estudio.name()}" itemValue="#{estudio.name()}" />
+		</h:selectOneMenu>
+
+		<p>Introduzca su valoracion (0-10)</p>
+		<h:inputText value="#{votarBean.valoracion}" />
 
 		<p>
-			<h:commandButton value="Votar" action="#{votarBean.process}" />
+			<h:commandButton value="Votar" type="submit" action="#{votarBean.process}" />
 		</p>
 	</h:form>
 

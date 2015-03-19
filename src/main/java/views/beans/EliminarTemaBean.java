@@ -10,7 +10,7 @@ public class EliminarTemaBean {
 
     private int idTema;
 
-    @ManagedProperty(value = "#{auth}")
+    //@ManagedProperty(value = "#{auth}")
     private int auth;
 
     @ManagedProperty(value = "#{controllerFactory}")

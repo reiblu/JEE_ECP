@@ -5,6 +5,8 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.model.SelectItem;
 
 import models.entities.Tema;
@@ -14,7 +16,8 @@ import org.apache.logging.log4j.LogManager;
 
 import controllers.ControllerFactory;
 
-@ManagedBean
+@ManagedBean (name = "verTemasBean")
+@SessionScoped
 public class VerTemasBean {
     
     private String oneListbox;
@@ -33,9 +36,6 @@ public class VerTemasBean {
 
     @ManagedProperty(value = "#{controllerFactory}")
     private ControllerFactory controllerFactory;
-    
-    //@ManagedProperty(value = "#{votarBean}")
-    private VotarBean votarBean;
 
     public VerTemasBean() {
 
@@ -91,10 +91,6 @@ public class VerTemasBean {
         this.nombre = nombre;
     }
 
-    public void setVotarBean(VotarBean votarBean) {
-        this.votarBean = votarBean;
-    }
-
     public String getIdTema() {
         return idTema;
     }
@@ -104,8 +100,6 @@ public class VerTemasBean {
     }
 
     public String votar(){
-        //this.votarBean.setidTema(Integer.valueOf(idTema));
-        //Pasar tema al bean de votar
         return "votar";
     }
     
