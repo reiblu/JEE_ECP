@@ -25,15 +25,16 @@
 	<h3>Mira los votos de un tema</h3>
 	<h:form id="verVotos">
 		<p>Lista de los temas para seleccionar:</p>
-		<h:selectOneMenu id="temas">
+		<h:selectOneMenu value="#{verTemasBean.idTema}">
 			<f:selectItems value="#{verTemasBean.temas}" var="tema"
 				itemLabel="#{tema.nombre}" itemValue="#{tema.id}" />
 		</h:selectOneMenu>
 		<p>Lista de los niveles de estudio a seleccionar:</p>
-        <h:selectOneMenu id="est">
-            <f:selectItems value="#{verTemasBean.estudios}" var="estudio"
-                itemLabel="#{estudio.name()}" itemValue="#{estudio.name()}" />
-        </h:selectOneMenu>
+        <h:selectOneMenu id="estudios" value="#{votarBean.nivelEstudios}">
+			<f:selectItems value="#{votarBean.estudios}" var="estudio"
+				itemLabel="#{estudio.name()}" itemValue="#{estudio.name()}" />
+		</h:selectOneMenu>
+		<h:message for="estudios"></h:message>
 
 		<p>
 			<h:commandButton value="Ver Votos" action="#{verTemasBean.verVotos}" /> 
