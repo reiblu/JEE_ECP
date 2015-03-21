@@ -30,11 +30,7 @@
 				itemLabel="#{tema.nombre}" itemValue="#{tema.id}" />
 		</h:selectOneMenu>
 		<p>Lista de los niveles de estudio a seleccionar:</p>
-        <h:selectOneMenu id="estudios" value="#{votarBean.nivelEstudios}">
-			<f:selectItems value="#{votarBean.estudios}" var="estudio"
-				itemLabel="#{estudio.name()}" itemValue="#{estudio.name()}" />
-		</h:selectOneMenu>
-		<h:message for="estudios"></h:message>
+       
 
 		<p>
 			<h:commandButton value="Ver Votos" action="#{verTemasBean.verVotos}" /> 

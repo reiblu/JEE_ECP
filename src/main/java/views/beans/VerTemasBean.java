@@ -102,7 +102,7 @@ public class VerTemasBean {
     }
     
     public String verVotos(){
-        return "verVotos";
+        return null;
         
     }
     public String eliminarTema(){
