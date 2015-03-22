@@ -6,7 +6,6 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import javax.faces.model.SelectItem;
 
 import models.entities.Tema;
 import models.utils.Estudios;
@@ -15,98 +14,74 @@ import org.apache.logging.log4j.LogManager;
 
 import controllers.ControllerFactory;
 
-@ManagedBean (name = "verTemasBean")
+@ManagedBean(name = "verTemasBean")
 @SessionScoped
 public class VerTemasBean {
-    
-    private String oneListbox;
-    
-    private String idTema;
+
+	private String idTema;
+
+	private List<Tema> temas;
+
+	private Estudios nivelEstudios;
 	
-    @ManagedProperty (value="#{temas}")
-    private List<Tema> temas;
+	@ManagedProperty(value = "#{controllerFactory}")
+	private ControllerFactory controllerFactory;
 
-    SelectItem items;
-    
-    private String errorMsg;
-    
-    @ManagedProperty(value = "#{tema.getNombre()}")
-    private String nombre;
+	public VerTemasBean() {
 
-    @ManagedProperty(value = "#{controllerFactory}")
-    private ControllerFactory controllerFactory;
+	}
 
-    public VerTemasBean() {
+	@PostConstruct
+	public void update() {
+		LogManager.getLogger(VerTemasBean.class).debug(
+				"Se accede a la capa de negocio para recuperar roles");
+		this.temas = controllerFactory.getVotarController().getTemas();
+	}
 
-    }
-    
-    @PostConstruct
-    public void update() {
-        LogManager.getLogger(VerTemasBean.class).debug(
-                "Se accede a la capa de negocio para recuperar roles");
-         this.temas = controllerFactory.getVotarController().getTemas();
-    }
-    
-    public Estudios[] getEstudios() {
-        return Estudios.values();
-    }
+	public Estudios[] getEstudios() {
+		return Estudios.values();
+	}
 
-    public String getErrorMsg() {
-        return errorMsg;
-    }
+	public List<Tema> getTemas() {
+		return temas;
+	}
 
-    public void setErrorMsg(String errorMsg) {
-        this.errorMsg = errorMsg;
-    }
+	public void setTemas(List<Tema> temas) {
+		this.temas = temas;
+	}
 
-    public String getOneListbox() {
-        return oneListbox;
-    }
+	public Estudios getNivelEstudios() {
+		return nivelEstudios;
+	}
 
-    public void setOneListbox(String oneListbox) {
-        this.oneListbox = oneListbox;
-    }
+	public void setNivelEstudios(Estudios nivelEstudios) {
+		this.nivelEstudios = nivelEstudios;
+	}
 
-    public List<Tema> getTemas() {
-        return temas;
-    }
+	public void setControllerFactory(ControllerFactory controller) {
+		this.controllerFactory = controller;
 
-    public void setTemas(List<Tema> temas) {
-        this.temas = temas;
-    }
+	}
 
+	public String getIdTema() {
+		return idTema;
+	}
 
-    public void setControllerFactory(ControllerFactory controller) {
-        this.controllerFactory = controller;
-        
-    }
+	public void setIdTema(String idTema) {
+		this.idTema = idTema;
+	}
 
-    public String getNombre() {
-        return nombre;
-    }
+	public String votar() {
+		return "votar";
+	}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+	public String verVotos() {
+		return "verVotos";
 
-    public String getIdTema() {
-        return idTema;
-    }
+	}
 
-    public void setIdTema(String idTema) {
-        this.idTema = idTema;
-    }
+	public String eliminarTema() {
+		return "eliminarTema";
 
-    public String votar(){
-        return "votar";
-    }
-    
-    public String verVotos(){
-        return null;
-        
-    }
-    public String eliminarTema(){
-        return "eliminarTema";
-        
-    }
+	}
 }

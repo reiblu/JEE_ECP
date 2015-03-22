@@ -37,6 +37,9 @@ public class Dispatcher extends HttpServlet {
 		String view;
 		switch (action) {
 		
+		case "error":
+			view = "error";
+			break;
 		case "verTemas":
 			VerTemasBean temas = new VerTemasBean();
 			temas.setControllerFactory(controller);

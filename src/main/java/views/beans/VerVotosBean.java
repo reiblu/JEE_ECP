@@ -19,6 +19,9 @@ public class VerVotosBean {
 
     @ManagedProperty(value = "#{controllerFactory}")
     private ControllerFactory controllerFactory;
+    
+    @ManagedProperty(value = "#{verTemasBean}")
+	private VerTemasBean verTemasBean;
 
     private long numVotos;
 
@@ -57,7 +60,15 @@ public class VerVotosBean {
 
     }
 
-    public void setidTema(Integer idTema) {
+    public VerTemasBean getVerTemasBean() {
+		return verTemasBean;
+	}
+
+	public void setVerTemasBean(VerTemasBean verTemasBean) {
+		this.verTemasBean = verTemasBean;
+	}
+
+	public void setidTema(Integer idTema) {
         this.idTema = idTema;
 
     }
@@ -71,6 +82,12 @@ public class VerVotosBean {
     }
 
     @PostConstruct
+    public void updateJsf() {
+    	idTema = Integer.valueOf(verTemasBean.getIdTema());
+    	estudios = verTemasBean.getNivelEstudios();
+        update();
+    }
+    
     public void update() {
         this.tema = controllerFactory.getVerVotosController().getTema(idTema);
         this.numVotos = controllerFactory.getVerVotosController().getNumVotos(idTema);

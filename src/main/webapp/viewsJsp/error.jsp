@@ -11,9 +11,6 @@
 	<p>
 		<a href="/jee/jsp/verTemas">Ver temas</a>
 	</p>
-	<p>
-		<a href="/jee/jsp/altaTema">Nuevo Tema</a>
-	</p>
 	
 </body>
 </html>

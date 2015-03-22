@@ -7,13 +7,11 @@
 	<title>Practica votos</title>
 </h:head>
 <h:body>
-	<h3>Detalles sobre el tema escogido</h3>
+	<h3>Ha sufrido un error de autorizacion</h3>
 
-	<p>Nombre del tema: #{verVotosBean.tema.nombre}</p>
-	<p>Pregunta del tema: #{verVotosBean.tema.pregunta}</p>
-	<p>Numero de votos: #{verVotosBean.numVotos}</p>
-	<p>Valoracion media por nivel de estudios escogido: #{verVotosBean.mediaValoracion} nivel: #{verVotosBean.estudios}</p>
-
+	<p>
+		<h:link value="Ver Temas" outcome="verTemas" />
+	</p>
 
 </h:body>
 </html>
