@@ -106,7 +106,7 @@ public class VerTemasBean {
         
     }
     public String eliminarTema(){
-        return null;
+        return "eliminarTema";
         
     }
 }

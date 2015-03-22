@@ -36,5 +36,19 @@
 			<h:commandButton value="Ver Votos" action="#{verTemasBean.verVotos}" /> 
 		</p>
 	</h:form>
+	<h3>Elimina un tema</h3>
+    <h:form id="eliminarTema">
+		<p>Lista de los temas para seleccionar:</p>
+		<h:selectOneMenu value="#{verTemasBean.idTema}">  
+			<f:selectItems value="#{verTemasBean.temas}" var="tema"
+				itemLabel="#{tema.nombre}" itemValue="#{tema.id}" />
+		</h:selectOneMenu>
+
+		<p>
+			<h:commandButton value="Eliminar Tema" type="submit" action="#{verTemasBean.eliminarTema}" />
+		</p>
+	</h:form>
+	
+	
 </h:body>
 </html>

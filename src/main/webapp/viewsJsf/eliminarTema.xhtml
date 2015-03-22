@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>Practica votos</title>
+</h:head>
+<h:body>
+	<h3>Eliminar Tema</h3>
+	<h:form id="eliminarTemaBean">
+		<p>Tema escogido para eliminar</p>
+		<p>Nombre del tema: #{eliminarTemaBean.tema.nombre}</p>
+		<p>Pregunta del tema: #{eliminarTemaBean.tema.pregunta}</p>
+
+		<h:inputText id="autorizacion" value="#{eliminarTemaBean.auth}" />
+		<h:message for="autorizacion"></h:message>
+
+		<p>
+			<h:commandButton value="Eliminar Tema" action="#{eliminarTemaBean.process}" />
+		</p>
+	</h:form>
+</h:body>
+</html>

@@ -1,60 +1,89 @@
 package views.beans;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 
+import models.entities.Tema;
 import controllers.ControllerFactory;
 
 @ManagedBean
 public class EliminarTemaBean {
 
-    private int idTema;
+	private int idTema;
 
-    //@ManagedProperty(value = "#{auth}")
-    private int auth;
+	private int auth;
 
-    @ManagedProperty(value = "#{controllerFactory}")
-    private ControllerFactory controllerFactory;
+	private Tema tema;
 
-    public EliminarTemaBean() {
+	@ManagedProperty(value = "#{verTemasBean}")
+	private VerTemasBean verTemasBean;
 
-    }
+	@ManagedProperty(value = "#{controllerFactory}")
+	private ControllerFactory controllerFactory;
 
-    public int getIdTema() {
-        return idTema;
-    }
+	public EliminarTemaBean() {
 
-    public void setIdTema(int idTema) {
-        this.idTema = idTema;
-    }
+	}
 
-    public void setidTema(Integer idTema) {
-        this.idTema = idTema;
+	public int getIdTema() {
+		return idTema;
+	}
 
-    }
+	public void setIdTema(int idTema) {
+		this.idTema = idTema;
+	}
 
-    public void setControllerFactory(ControllerFactory controller) {
-        this.controllerFactory = controller;
+	public void setidTema(Integer idTema) {
+		this.idTema = idTema;
 
-    }
+	}
 
-    public int getAuth() {
-        return auth;
-    }
+	public Tema getTema() {
+		return tema;
+	}
 
-    public void setAuth(Integer auth) {
-        this.auth = auth;
+	public void setTema(Tema tema) {
+		this.tema = tema;
+	}
 
-    }
+	public void setControllerFactory(ControllerFactory controller) {
+		this.controllerFactory = controller;
 
-    public String process() {
-        if (auth == 666) {
-            controllerFactory.getEliminarController().eliminar(idTema);
-            return "home";
-        } else {
-            System.out.println("No autorizado");
-            return "error";
-        }
-    }
+	}
+
+	public void setVerTemasBean(VerTemasBean verTemasBean) {
+		this.verTemasBean = verTemasBean;
+	}
+
+	public int getAuth() {
+		return auth;
+	}
+
+	public void setAuth(Integer auth) {
+		this.auth = auth;
+
+	}
+
+	public void setAuth(int auth) {
+		this.auth = auth;
+
+	}
+
+	@PostConstruct
+	public void updatejsf() {
+		idTema = Integer.valueOf(verTemasBean.getIdTema());
+		this.tema = controllerFactory.getVotarController().getTema(idTema);
+	}
+
+	public String process() {
+		if (auth == 666) {
+			controllerFactory.getEliminarController().eliminar(idTema);
+			return "home";
+		} else {
+			System.out.println("No autorizado");
+			return "error";
+		}
+	}
 
 }
