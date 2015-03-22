@@ -15,6 +15,7 @@
 
 		<h:inputText id="autorizacion" value="#{eliminarTemaBean.auth}" />
 		<h:message for="autorizacion"></h:message>
+		<h:inputHidden id="idTema" value="#{eliminarTemaBean.idTema}" />
 
 		<p>
 			<h:commandButton value="Eliminar Tema" action="#{eliminarTemaBean.process}" />

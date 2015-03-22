@@ -72,7 +72,9 @@ public class EliminarTemaBean {
 
 	@PostConstruct
 	public void updatejsf() {
-		idTema = Integer.valueOf(verTemasBean.getIdTema());
+		if (verTemasBean.getIdTema() != null) {
+			idTema = Integer.valueOf(verTemasBean.getIdTema());
+		}
 		this.tema = controllerFactory.getVotarController().getTema(idTema);
 	}
 

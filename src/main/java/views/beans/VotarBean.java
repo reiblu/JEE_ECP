@@ -3,7 +3,6 @@ package views.beans;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,7 +11,6 @@ import models.utils.Estudios;
 import controllers.ControllerFactory;
 
 @ManagedBean(name = "votarBean")
-@SessionScoped
 public class VotarBean {
 
 	private int idTema;
@@ -66,7 +64,7 @@ public class VotarBean {
 		this.verTemasBean = verTemasBean;
 	 }
 
-	public void setidTema(int attribute) {
+	public void setIdTema(int attribute) {
 		idTema = attribute;
 	}
 
@@ -80,7 +78,9 @@ public class VotarBean {
 
 	@PostConstruct
 	public void updatejsf() {
-		idTema = Integer.valueOf(verTemasBean.getIdTema());
+		if (verTemasBean.getIdTema() != null) {
+			idTema = Integer.valueOf(verTemasBean.getIdTema());
+		}
 		this.update();
 	}
 

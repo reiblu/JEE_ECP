@@ -5,7 +5,6 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
 
 import models.entities.Tema;
 import models.utils.Estudios;
@@ -15,7 +14,6 @@ import org.apache.logging.log4j.LogManager;
 import controllers.ControllerFactory;
 
 @ManagedBean(name = "verTemasBean")
-@SessionScoped
 public class VerTemasBean {
 
 	private String idTema;
