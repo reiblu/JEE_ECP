@@ -22,12 +22,10 @@ public class VerVotosEjb implements VerVotos {
 		return votodao.getNumVotos(idTema);
 	}
 
-    @Override
-    public double getValoracionMedia(int idTema, Estudios estudios) {
-        VotoDao votodao = DaoFactory.getFactory().getVotoDao();
-        return votodao.getValoracionMedia(idTema, estudios);
-    }
-
-	
+	@Override
+	public double getValoracionMedia(int idTema, Estudios estudios) {
+		VotoDao votodao = DaoFactory.getFactory().getVotoDao();
+		return votodao.getValoracionMedia(idTema, estudios);
+	}
 
 }

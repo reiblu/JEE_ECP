@@ -36,7 +36,7 @@ public class Dispatcher extends HttpServlet {
 
 		String view;
 		switch (action) {
-		
+
 		case "error":
 			view = "error";
 			break;
@@ -71,24 +71,24 @@ public class Dispatcher extends HttpServlet {
 
 		String view = "home";
 		switch (action) {
-		
+
 		case "procesarVoto":
-            VotarBean votar = new VotarBean();
-            votar.setIdTema(Integer.valueOf(request.getParameter("tema")));
-            votar.setControllerFactory(controller);
-            actionAux = "votar";
-            request.setAttribute(actionAux, votar);
-            view = actionAux;
-            break;
-		
+			VotarBean votar = new VotarBean();
+			votar.setIdTema(Integer.valueOf(request.getParameter("tema")));
+			votar.setControllerFactory(controller);
+			actionAux = "votar";
+			request.setAttribute(actionAux, votar);
+			view = actionAux;
+			break;
+
 		case "verVotos":
-            VerVotosBean votos = new VerVotosBean();
-            votos.setidTema(Integer.valueOf(request.getParameter("tema")));
-            votos.setEstudios(request.getParameter("estudios"));
-            votos.setControllerFactory(controller);
-            request.setAttribute(action, votos);
-            view = action;
-            break;
+			VerVotosBean votos = new VerVotosBean();
+			votos.setidTema(Integer.valueOf(request.getParameter("tema")));
+			votos.setEstudios(request.getParameter("estudios"));
+			votos.setControllerFactory(controller);
+			request.setAttribute(action, votos);
+			view = action;
+			break;
 
 		case "votar":
 			VotarBean votar1 = new VotarBean();

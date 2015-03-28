@@ -9,17 +9,18 @@
 </h:head>
 <h:body>
 	<h2>Ver Temas</h2>
-   
-    <h3>Vota un tema</h3>
-    <h:form id="verTemas">
+
+	<h3>Vota un tema</h3>
+	<h:form id="verTemas">
 		<p>Lista de los temas para seleccionar:</p>
-		<h:selectOneMenu value="#{verTemasBean.idTema}">  
+		<h:selectOneMenu value="#{verTemasBean.idTema}">
 			<f:selectItems value="#{verTemasBean.temas}" var="tema"
 				itemLabel="#{tema.nombre}" itemValue="#{tema.id}" />
 		</h:selectOneMenu>
 
 		<p>
-			<h:commandButton value="Votar" type="submit" action="#{verTemasBean.votar}" />
+			<h:commandButton value="Votar" type="submit"
+				action="#{verTemasBean.votar}" />
 		</p>
 	</h:form>
 	<h3>Mira los votos de un tema</h3>
@@ -30,29 +31,30 @@
 				itemLabel="#{tema.nombre}" itemValue="#{tema.id}" />
 		</h:selectOneMenu>
 		<p>Lista de los niveles de estudio a seleccionar:</p>
-       <h:selectOneMenu id="estudios" value="#{verTemasBean.nivelEstudios}">
+		<h:selectOneMenu id="estudios" value="#{verTemasBean.nivelEstudios}">
 			<f:selectItems value="#{verTemasBean.estudios}" var="estudio"
 				itemLabel="#{estudio.name()}" itemValue="#{estudio.name()}" />
 		</h:selectOneMenu>
 		<h:message for="estudios"></h:message>
 
 		<p>
-			<h:commandButton value="Ver Votos" action="#{verTemasBean.verVotos}" /> 
+			<h:commandButton value="Ver Votos" action="#{verTemasBean.verVotos}" />
 		</p>
 	</h:form>
 	<h3>Elimina un tema</h3>
-    <h:form id="eliminarTema">
+	<h:form id="eliminarTema">
 		<p>Lista de los temas para seleccionar:</p>
-		<h:selectOneMenu value="#{verTemasBean.idTema}">  
+		<h:selectOneMenu value="#{verTemasBean.idTema}">
 			<f:selectItems value="#{verTemasBean.temas}" var="tema"
 				itemLabel="#{tema.nombre}" itemValue="#{tema.id}" />
 		</h:selectOneMenu>
 
 		<p>
-			<h:commandButton value="Eliminar Tema" type="submit" action="#{verTemasBean.eliminarTema}" />
+			<h:commandButton value="Eliminar Tema" type="submit"
+				action="#{verTemasBean.eliminarTema}" />
 		</p>
 	</h:form>
-	
-	
+
+
 </h:body>
 </html>

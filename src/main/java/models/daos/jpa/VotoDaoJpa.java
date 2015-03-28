@@ -13,81 +13,84 @@ import models.utils.Estudios;
 
 public class VotoDaoJpa extends GenericDaoJpa<Voto, Integer> implements VotoDao {
 
-    public VotoDaoJpa() {
-        super(Voto.class);
-    }
+	public VotoDaoJpa() {
+		super(Voto.class);
+	}
 
-    EntityManager em = DaoJpaFactory.getEntityManagerFactory().createEntityManager();
+	EntityManager em = DaoJpaFactory.getEntityManagerFactory()
+			.createEntityManager();
 
-    CriteriaBuilder criteria = em.getCriteriaBuilder();
+	CriteriaBuilder criteria = em.getCriteriaBuilder();
 
-    public void BorrarVotosdeTema(int idTema) {
+	public void BorrarVotosdeTema(int idTema) {
 
-        em.getTransaction().begin();
-        CriteriaDelete<Voto> borrar = criteria.createCriteriaDelete(Voto.class);
-        Root<Voto> e = borrar.from(Voto.class);
-        borrar.where(criteria.equal(e.get("tema").get("id"), idTema));
-        em.createQuery(borrar).executeUpdate();
-        em.getTransaction().commit();
+		em.getTransaction().begin();
+		CriteriaDelete<Voto> borrar = criteria.createCriteriaDelete(Voto.class);
+		Root<Voto> e = borrar.from(Voto.class);
+		borrar.where(criteria.equal(e.get("tema").get("id"), idTema));
+		em.createQuery(borrar).executeUpdate();
+		em.getTransaction().commit();
 
-    }
+	}
 
-    public long getNumVotos(int idTema) {
+	public long getNumVotos(int idTema) {
 
-        EntityManager entityManager = DaoJpaFactory.getEntityManagerFactory().createEntityManager();
-        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Long> query = cb.createQuery(Long.class);
+		EntityManager entityManager = DaoJpaFactory.getEntityManagerFactory()
+				.createEntityManager();
+		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Long> query = cb.createQuery(Long.class);
 
-        Root<Voto> root = query.from(Voto.class);
+		Root<Voto> root = query.from(Voto.class);
 
-        query.select(cb.count(root));
-        Predicate predicate = cb.equal(root.get("tema").get("id"), idTema);
-        query.where(predicate);
+		query.select(cb.count(root));
+		Predicate predicate = cb.equal(root.get("tema").get("id"), idTema);
+		query.where(predicate);
 
-        return entityManager.createQuery(query).getSingleResult();
-    }
-    
-    public long getNumVotosAux(int idTema, Estudios estudio) {
+		return entityManager.createQuery(query).getSingleResult();
+	}
 
-        EntityManager entityManager = DaoJpaFactory.getEntityManagerFactory().createEntityManager();
-        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Long> query = cb.createQuery(Long.class);
+	public long getNumVotosAux(int idTema, Estudios estudio) {
 
-        Root<Voto> root = query.from(Voto.class);
+		EntityManager entityManager = DaoJpaFactory.getEntityManagerFactory()
+				.createEntityManager();
+		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Long> query = cb.createQuery(Long.class);
 
-        query.select(cb.count(root));
-        Predicate predicate = cb.equal(root.get("tema").get("id"), idTema);
-        Predicate p1 = cb.equal(root.get("estudios"), estudio);
-        Predicate p2 = cb.and(p1, predicate);
-        query.where(p2);
+		Root<Voto> root = query.from(Voto.class);
 
-        return entityManager.createQuery(query).getSingleResult();
-    }
+		query.select(cb.count(root));
+		Predicate predicate = cb.equal(root.get("tema").get("id"), idTema);
+		Predicate p1 = cb.equal(root.get("estudios"), estudio);
+		Predicate p2 = cb.and(p1, predicate);
+		query.where(p2);
 
+		return entityManager.createQuery(query).getSingleResult();
+	}
 
-    public double getValoracionMedia(int idTema, Estudios estudio) {
-        
-        long votos = getNumVotosAux(idTema, estudio);
-        
-        if (votos == 0){
-            return 0.0;
-        }else{
-        
-        EntityManager entityManager = DaoJpaFactory.getEntityManagerFactory().createEntityManager();
-        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Double> query = cb.createQuery(Double.class);
+	public double getValoracionMedia(int idTema, Estudios estudio) {
 
-        Root<Voto> root = query.from(Voto.class);
+		long votos = getNumVotosAux(idTema, estudio);
 
-        query.multiselect(cb.avg(root.get("valoracion")));
-        Predicate p = cb.equal(root.get("tema").get("id"), idTema);
-        Predicate p1 = cb.equal(root.get("estudios"), estudio);
-        Predicate p2 = cb.and(p, p1);
-        query.where(p2);
+		if (votos == 0) {
+			return 0.0;
+		} else {
 
-        return entityManager.createQuery(query).getSingleResult();
-        }
+			EntityManager entityManager = DaoJpaFactory
+					.getEntityManagerFactory().createEntityManager();
+			CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+			CriteriaQuery<Double> query = cb.createQuery(Double.class);
 
-    }
+			Root<Voto> root = query.from(Voto.class);
+
+			query.multiselect(cb.avg(root.get("valoracion")));
+			Predicate p = cb.equal(root.get("tema").get("id"), idTema);
+			Predicate p1 = cb.equal(root.get("estudios"), estudio);
+			Predicate p2 = cb.and(p, p1);
+			query.where(p2);
+
+			return entityManager.createQuery(query).getSingleResult();
+		}
+
+	}
 
 }

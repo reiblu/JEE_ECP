@@ -32,7 +32,7 @@ public class VotarEjb implements Votar {
 		VotoDao voto = DaoFactory.getFactory().getVotoDao();
 		Voto v1 = new Voto(estudios, ipUsuario, valoracion, tema);
 		voto.create(v1);
-		
+
 	}
 
 }

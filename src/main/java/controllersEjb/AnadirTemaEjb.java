@@ -12,7 +12,7 @@ public class AnadirTemaEjb implements AnadirTema {
 		TemaDao tema = DaoFactory.getFactory().getTemaDao();
 		Tema t1 = new Tema(pregunta, nombre);
 		tema.create(t1);
-		
+
 	}
 
 }

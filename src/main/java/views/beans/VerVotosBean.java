@@ -11,56 +11,56 @@ import controllers.ControllerFactory;
 @ManagedBean
 public class VerVotosBean {
 
-    private int idTema;
+	private int idTema;
 
-    private Tema tema;
+	private Tema tema;
 
-    private Estudios estudios;
+	private Estudios estudios;
 
-    @ManagedProperty(value = "#{controllerFactory}")
-    private ControllerFactory controllerFactory;
-    
-    @ManagedProperty(value = "#{verTemasBean}")
+	@ManagedProperty(value = "#{controllerFactory}")
+	private ControllerFactory controllerFactory;
+
+	@ManagedProperty(value = "#{verTemasBean}")
 	private VerTemasBean verTemasBean;
 
-    private long numVotos;
+	private long numVotos;
 
-    private double mediaValoracion;
+	private double mediaValoracion;
 
-    public VerVotosBean() {
+	public VerVotosBean() {
 
-    }
+	}
 
-    public Tema getTema() {
-        return tema;
-    }
+	public Tema getTema() {
+		return tema;
+	}
 
-    public void setTema(Tema tema) {
-        this.tema = tema;
-    }
+	public void setTema(Tema tema) {
+		this.tema = tema;
+	}
 
-    public long getNumVotos() {
-        return numVotos;
-    }
+	public long getNumVotos() {
+		return numVotos;
+	}
 
-    public void setNumVotos(int numVotos) {
-        this.numVotos = numVotos;
-    }
+	public void setNumVotos(int numVotos) {
+		this.numVotos = numVotos;
+	}
 
-    public double getMediaValoracion() {
-        return mediaValoracion;
-    }
+	public double getMediaValoracion() {
+		return mediaValoracion;
+	}
 
-    public void setMediaValoracion(double mediaValoracion) {
-        this.mediaValoracion = mediaValoracion;
-    }
+	public void setMediaValoracion(double mediaValoracion) {
+		this.mediaValoracion = mediaValoracion;
+	}
 
-    public void setControllerFactory(ControllerFactory controller) {
-        this.controllerFactory = controller;
+	public void setControllerFactory(ControllerFactory controller) {
+		this.controllerFactory = controller;
 
-    }
+	}
 
-    public VerTemasBean getVerTemasBean() {
+	public VerTemasBean getVerTemasBean() {
 		return verTemasBean;
 	}
 
@@ -69,35 +69,36 @@ public class VerVotosBean {
 	}
 
 	public void setidTema(Integer idTema) {
-        this.idTema = idTema;
+		this.idTema = idTema;
 
-    }
+	}
 
-    public Estudios getEstudios() {
-        return estudios;
-    }
+	public Estudios getEstudios() {
+		return estudios;
+	}
 
-    public void setEstudios(Estudios estudios) {
-        this.estudios = estudios;
-    }
+	public void setEstudios(Estudios estudios) {
+		this.estudios = estudios;
+	}
 
-    @PostConstruct
-    public void updateJsf() {
-    	idTema = Integer.valueOf(verTemasBean.getIdTema());
-    	estudios = verTemasBean.getNivelEstudios();
-        update();
-    }
-    
-    public void update() {
-        this.tema = controllerFactory.getVerVotosController().getTema(idTema);
-        this.numVotos = controllerFactory.getVerVotosController().getNumVotos(idTema);
-        this.mediaValoracion = controllerFactory.getVerVotosController().getValoracionMedia(idTema,
-                estudios);
-    }
+	@PostConstruct
+	public void updateJsf() {
+		idTema = Integer.valueOf(verTemasBean.getIdTema());
+		estudios = verTemasBean.getNivelEstudios();
+		update();
+	}
 
-    public void setEstudios(String estudios) {
-        this.estudios = Estudios.valueOf(estudios);
+	public void update() {
+		this.tema = controllerFactory.getVerVotosController().getTema(idTema);
+		this.numVotos = controllerFactory.getVerVotosController().getNumVotos(
+				idTema);
+		this.mediaValoracion = controllerFactory.getVerVotosController()
+				.getValoracionMedia(idTema, estudios);
+	}
 
-    }
+	public void setEstudios(String estudios) {
+		this.estudios = Estudios.valueOf(estudios);
+
+	}
 
 }

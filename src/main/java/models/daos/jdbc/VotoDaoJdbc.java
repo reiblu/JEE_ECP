@@ -7,49 +7,50 @@ import models.entities.Tema;
 import models.entities.Voto;
 import models.utils.Estudios;
 
-public class VotoDaoJdbc extends GenericDaoJdbc<Voto, Integer> implements VotoDao {
+public class VotoDaoJdbc extends GenericDaoJdbc<Voto, Integer> implements
+		VotoDao {
 
-    public void create(Tema entity) {
+	public void create(Tema entity) {
 
-    }
+	}
 
-    @Override
-    public void deleteByID(Integer id) {
+	@Override
+	public void deleteByID(Integer id) {
 
-    }
+	}
 
-    public List<Voto> findAll() {
+	public List<Voto> findAll() {
 
-        return null;
-    }
+		return null;
+	}
 
-    public static String sqlToCreateTable() {
-        // TODO Auto-generated method stub
-        return null;
-    }
+	public static String sqlToCreateTable() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Override
-    public void create(Voto entity) {
-        // TODO Auto-generated method stub
+	@Override
+	public void create(Voto entity) {
+		// TODO Auto-generated method stub
 
-    }
+	}
 
-    @Override
-    public Voto read(Integer id) {
-        // TODO Auto-generated method stub
-        return null;
-    }
+	@Override
+	public Voto read(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Override
-    public void update(Voto entity) {
-        // TODO Auto-generated method stub
+	@Override
+	public void update(Voto entity) {
+		// TODO Auto-generated method stub
 
-    }
+	}
 
 	@Override
 	public void BorrarVotosdeTema(int idTema) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

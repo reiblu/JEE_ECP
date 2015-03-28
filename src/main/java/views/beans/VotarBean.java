@@ -62,7 +62,7 @@ public class VotarBean {
 
 	public void setVerTemasBean(VerTemasBean verTemasBean) {
 		this.verTemasBean = verTemasBean;
-	 }
+	}
 
 	public void setIdTema(int attribute) {
 		idTema = attribute;
@@ -127,12 +127,13 @@ public class VotarBean {
 		this.ipUsuario = ipUser;
 
 	}
-	
+
 	public String getRemoteAddr() {
-		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		HttpServletRequest request = (HttpServletRequest) FacesContext
+				.getCurrentInstance().getExternalContext().getRequest();
 		String ipAddress = request.getHeader("X-FORWARDED-FOR");
 		if (ipAddress == null) {
-		    ipAddress = request.getRemoteAddr();
+			ipAddress = request.getRemoteAddr();
 		}
 		return ipAddress;
 	}
